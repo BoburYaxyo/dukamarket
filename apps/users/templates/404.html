@@ -1,0 +1,38 @@
+
+{% extends 'main.html' %}
+
+
+{% block content %}
+   <body>
+      <!--[if lte IE 9]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+      <![endif]-->
+
+
+    <main>
+        <!-- error-area-start -->
+        <div class="error-area pt-80 pb-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="error-info text-center">
+                            <div class="error-image text-center mb-50">
+                                <img src="/static/assets/img/banner/404.png" alt="">
+                            </div>
+                            <div class="error-content">
+                                <h5>Page Not Found</h5>
+                                <p>Sorry, the page you've requested is not available. Please try searching for something else or return to Homepage.</p>
+                                <div class="error-button">
+                                    <a href="/" class="error-btn">Return to Homepage</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- error-area-start -->
+    </main>
+   </body>
+</html>
+{% endblock content %}

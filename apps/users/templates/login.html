@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iofrm</title>
+    <link rel="stylesheet" type="text/css" href="/static/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/assets/css/iofrm-style.css">
+    <link rel="stylesheet" type="text/css" href="/static/assets/css/iofrm-theme18.css">
+</head>
+
+<body>
+
+    {% if page == 'login' %}
+    <div class="form-body without-side">
+        <div class="website-logo">
+            <a href="#">
+                 <div class="logo" style="background: url('/static/assets/img/login/logo-dark.svg');">
+                    <img class="logo-size" src="/static/assets/img/login/logo-dark.svg" alt="">
+                </div>
+            </a>
+        </div>
+        <div class="row">
+            <div class="img-holder" style="background: url('/static/assets/img/login/img2.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+                <div class="bg"></div>
+                <div class="info-holder">
+                </div>
+            </div>
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Login to account</h3>
+                        <p>Access to the most powerfull tool in the entire design and web industry.</p>
+                        <form action="{% url 'login' %}" method="POST">
+                            {% csrf_token %}
+                            <input class="form-control" type="text" name="username" placeholder="E-mail Address" required>
+                            <input class="form-control" type="password" name="password" placeholder="Password" required>
+                            <div class="form-button">
+                                <button id="submit" type="submit" class="ibtn">Login</button> <a href="#" style="color: rgb(7, 97, 136);">Forget password?</a>
+                            </div>
+                        </form>
+                        <div class="other-links">
+                            <div class="text">Or login with</div>
+                            <a href="#"><i class="fab fa-facebook-f"></i>Facebook</a><a href="#"><i class="fab fa-google"></i>Google</a><a href="#"><i class="fab fa-linkedin-in"></i>Linkedin</a>
+                        </div>
+                        <div class="page-links">
+                            <a href="{% url 'register' %}">Register new account</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% else %}
+
+    <div class="form-body without-side">
+        <div class="website-logo">
+            <a href="#">
+                <div class="logo" style="background: url('/static/assets/img/login/logo-dark.svg');">
+                    <img class="logo-size" src="/static/assets/img/login/logo-dark.svg" alt="">
+                </div>
+            </a>
+        </div>
+        <div class="row">
+            <div class="img-holder" style="background: url('/static/assets/img/login/img2.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+                <div class="bg"></div>
+                <div class="info-holder">
+                    <img src="/static/assets/img/login/img2.jpg" alt="">
+                </div>
+            </div>
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Register new account</h3>
+                        <p>Access to the most powerfull tool in the entire design and web industry.</p>
+                        <form action="{% url 'register' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="text" name="username" placeholder="Username" />
+                            <input name="email" placeholder="Email" type="email" />
+                            <input type="password" name="password1" placeholder="Password" />
+                            <input type="password" name="password2" placeholder="Confirm Password" />
+                            <div class="form-button">
+                                <button id="submit" type="submit" class="ibtn">Register</button>
+                            </div>
+                        </form>
+                        <div class="other-links">
+                            <div class="text">Or register with</div>
+                            <a href="#"><i class="fab fa-facebook-f"></i>Facebook</a><a href="#"><i class="fab fa-google"></i>Google</a><a href="#"><i class="fab fa-linkedin-in"></i>Linkedin</a>
+                        </div>
+                        <div class="page-links">
+                            <a href="{% url 'login' %}">Login to account</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/js/popper.min.js"></script>
+    <script src="/static/assets/js/bootstrap.min.js"></script>
+    <script src="/static/assets/js/mainman/main.js"></script>
+</body>
+</html>
