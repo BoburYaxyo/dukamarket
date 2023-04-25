@@ -227,19 +227,19 @@
                                             <li>
                                               <div class="cart__title">
                                                 <h4>Your Cart</h4>
-                                                <span>(1 Item in Cart)</span>
+                                                <span>{{cartItems}}</span>
                                               </div>
                                             </li>
                                             <li>
                                               <div class="cart__item d-flex justify-content-between align-items-center">
                                                 <div class="cart__inner d-flex">
                                                   <div class="cart__thumb">
-                                                    <a href="{% url 'product-details' %}">
+                                                    <a href="#">
                                                       <img src="/static/assets/img/cart/20.jpg" alt="">
                                                     </a>
                                                   </div>
                                                   <div class="cart__details">
-                                                    <h6><a href="{% url 'product-details' %}"> Samsung C49J89: £875, Debenhams Plus  </a></h6>
+                                                    <h6><a href="#"> Samsung C49J89: £875, Debenhams Plus  </a></h6>
                                                     <div class="cart__price">
                                                       <span>$255.00</span>
                                                     </div>
@@ -325,4 +325,5 @@
         </div> 
     </div>
  </header>
+
  <!-- header-end -->

@@ -20,8 +20,6 @@ class CustomUserCreationForm(UserCreationForm):
             field.widget.attrs.update({'class': 'input'})
 
 
-
-
 class LoginForm(AuthenticationForm):
     username = forms.CharField(widget=TextInput())
     password = forms.CharField(widget=PasswordInput())

@@ -11,6 +11,14 @@ from .forms import CustomUserCreationForm
 from django.contrib.auth import login, authenticate, logout
 # Create your views here.
 
+from django.shortcuts import render
+from django.http import JsonResponse
+import json
+import datetime
+from .models import *
+from shopping.utils import cookieCart, cartData, guestOrder
+
+
 def login_user(request):
     page = 'login'
     if request.user.is_authenticated:
@@ -32,9 +40,11 @@ def login_user(request):
             return redirect('home')
         else:
             messages.error(request, "Username OR Password does not exist")
-            
-    context = {'page': page }
+
+    context = {'page': page}
     return render(request, 'login.html', context)
+
+
 def logoutUser(request):
     logout(request)
     messages.info(request, 'User was logged out!')
@@ -72,9 +82,16 @@ def register(request):
 
     return render(request, 'login.html', context)
 
+
 def checkout(request):
-    
-    return render(request, 'checkout.html')
+    data = cartData(request)
+
+    cartItems = data['cartItems']
+    order = data['order']
+    items = data['items']
+
+    context = {'items': items, 'order': order, 'cartItems': cartItems}
+    return render(request, 'checkout.html', context)
 
 
 def errorim(request):

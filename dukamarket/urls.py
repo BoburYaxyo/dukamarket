@@ -8,15 +8,15 @@ from django.views.static import serve
 
 urlpatterns = [
     path('', include('home.urls')),
-    
+
     path('users/', include('users.urls')),
-    
+
     path('blog/', include('blog.urls')),
-    
+
     path('shopping/', include('shopping.urls')),
-    
-    path('product-details/', include('products.urls')),    
-        
+
+    path('products/', include('products.urls')),
+
     path('admin/', admin.site.urls),
 ]
 

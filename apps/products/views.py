@@ -1,10 +1,14 @@
 from django.shortcuts import render
+from shopping.models import Product
 
 # Create your views here.
 
 
-def product_details(request):
-    return render(request, 'product-details.html')
+def single_prooduct(request, pk):
+    productObj = Product.objects.get(id=pk)
+
+    context = {'product': productObj}
+    return render(request, 'product-details.html', context)
 
 
 def wishlist(request):

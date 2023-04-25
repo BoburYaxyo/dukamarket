@@ -261,6 +261,7 @@
                                 </form>
                             </div>
                         </div>
+
                         <div class="product-widget mb-30">
                             <h5 class="pt-title">Special Offers</h5>
                             <div class="product__sm mt-20">
@@ -503,12 +504,14 @@
                                                 </div>
                                             </div>
                                         </div>
+                
+                                        {% for product in products %}
                                         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                                             <div class="product__item product__item-d">
                                                 <div class="product__thumb fix">
                                                     <div class="product-image w-img">
                                                         <a href="{% url 'product-details' %}">
-                                                            <img src="/static/assets/img/product/tp-4.jpg" alt="product">
+                                                            <img src="{{product.imageURL}}" alt="product">
                                                         </a>
                                                     </div>
                                                     <div class="product-action">
@@ -527,7 +530,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="product__content-3">
-                                                    <h6><a href="{% url 'product-details' %}">Wireless Bluetooth Over-Ear Headphones</a></h6>
+                                                    <h6><a href="{% url 'product-details' %}">{{product.name}}</a></h6>
                                                     <div class="rating mb-5">
                                                         <ul>
                                                             <li><a href="#"><i class="fal fa-star"></i></a></li>
@@ -539,19 +542,18 @@
                                                         <span>(01 review)</span>
                                                     </div>
                                                     <div class="price mb-10">
-                                                        <span>$135-$150</span>
+                                                        <span>${{product.price}}</span>
                                                     </div>
                                                 </div>
                                                 <div class="product__add-cart-s text-center">
-                                                    <button type="button" class="cart-btn d-flex mb-10 align-items-center justify-content-center w-100">
-                                                    Add to Cart
-                                                    </button>
+                                                    <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
                                                     <button type="button" class="wc-checkout d-flex align-items-center justify-content-center w-100" data-bs-toggle="modal" data-bs-target="#productModalId">
                                                         Quick View
                                                     </button>
                                                 </div>
                                             </div>
                                         </div>
+                                        {% endfor %}
                                         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                                             <div class="product__item product__item-d">
                                                 <div class="product__thumb fix">
