@@ -38,20 +38,10 @@
                             <ul class="nav nav-tabs flex-sm-column justify-content-between" id="productThumbTab" role="tablist">
                                 <li class="nav-item" role="presentation">
                                   <button class="nav-link active" id="thumbOne-tab" data-bs-toggle="tab" data-bs-target="#thumbOne" type="button" role="tab" aria-controls="thumbOne" aria-selected="true">
-                                      <img style="max-width: 50px; background-c" src="{{product.imageURL}}" alt="">
+                                      <img style="max-width: 50px;" src="{{product.imageURL}}" alt="">
                                   </button>
                                 </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="thumbOne-tab" data-bs-toggle="tab" data-bs-target="#thumbOne" type="button" role="tab" aria-controls="thumbOne" aria-selected="true">
-                                        <img style="max-width: 50px; background-c" src="{{product.imageURL2}}" alt="">
-                                    </button>
-                                  </li>
-                                  <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="thumbOne-tab" data-bs-toggle="tab" data-bs-target="#thumbOne" type="button" role="tab" aria-controls="thumbOne" aria-selected="true">
-                                        <img style="max-width: 50px; background-c" src="{{product.imageURL3}}" alt="">
-                                    </button>
-                                  </li>
-                            
+                            </ul>
                             <div class="product__details-thumb">
                                 <div class="tab-content" id="productThumbContent">
                                     <div class="tab-pane fade show active" id="thumbOne" role="tabpanel" aria-labelledby="thumbOne-tab">
@@ -266,7 +256,7 @@
                                 </div>
                                 <div class="col-xl-8">
                                     <div class="review-des-infod">
-                                        <h6>1 review for "<span>Wireless Bluetooth Over-Ear Headphones</span>"</h6>
+                                        <h6>1 review for "<span>{{product.name}}</span>"</h6>
                                         <div class="review-details-des">
                                             <div class="author-image mr-15">
                                                 <a href="#"><img src="/static/assets/img/author/author-sm-1.jpeg" alt=""></a>
@@ -284,11 +274,13 @@
                                                         <a href="#">Add Review</a>
                                                     </div>
                                                 </div>
+                                                {% for review in reviews %}
                                                 <div class="name-date mb-30">
-                                                    <h6> admin – <span> May 27, 2021</span></h6>
+                                                    <h6>{{review.name}}<span>{{review.created}}</span></h6>
                                                 </div>
-                                                <p>A light chair, easy to move around the dining table and about the room. Duis aute irure dolor in reprehenderit in <br> voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                                <p>{{review.review}}</p>
                                             </div>
+                                            {% endfor %}
                                         </div>
                                     </div>
                                 </div>
@@ -311,27 +303,31 @@
                                            </ul>
                                         </div>
                                         <div class="comment-input-box">
-                                           <form action="#">
+                                           <form action="" method='POST'>
+                                            {% csrf_token %}
                                               <div class="row">
                                                 <div class="col-xxl-6 col-xl-6">
                                                     <div class="comment-input">
-                                                       <input type="text" placeholder="Your Name">
+                                                        <label>Your name</label>
+                                                       <p>{{form.name}}</p>
                                                     </div>
                                                  </div>
                                                  <div class="col-xxl-6 col-xl-6">
                                                     <div class="comment-input">
-                                                       <input type="email" placeholder="Your Email">
+                                                        <label>Your Email</label>
+                                                       <p>{{form.email}}</p>
                                                     </div>
                                                  </div>
                                                  <div class="col-xxl-12">
-                                                       <textarea placeholder="Your review" class="comment-input comment-textarea"></textarea>
+                                                    <label>Your Review</label>
+                                                       <span class="comment-input comment-textarea">{{form.review}}</span>
                                                  </div>
                                                  <div class="col-xxl-12">
                                                     <div class="comment-agree d-flex align-items-center mb-25">
                                                        <div class="form-check">
-                                                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                        {{form.save_my}}
                                                           <label class="form-check-label" for="flexCheckDefault">
-                                                           Save my name, email, and website in this browser for the next time I comment.
+                                                        Save my name, email, and website in this browser for the next time I comment.
                                                           </label>
                                                         </div>
                                                     </div>

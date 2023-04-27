@@ -1,7 +1,27 @@
 import json
 from .models import *
+from django.db.models import Sum
+from products.models import Cart
 
 
+
+def cartview(request) -> dict:
+    myctx: dict = {}
+    myctx["cart_count"] = 0
+
+    if request.user.is_authenticated:
+        cart_products = Cart.objects.filter(
+            user=request.user).prefetch_related("products").first()
+
+    if cart_products:
+        myctx["sum_price"] = cart_products.products.aggregate(
+            Sum('price')).get('price__sum')       
+        myctx['cartitems'] = cart_products.products.all()
+        myctx['cart_count'] = cart_products.products.count()
+    
+    return myctx     
+        
+        
 def cookieCart(request):
 
     # Create empty cart for now for non-logged in user
@@ -90,3 +110,5 @@ def guestOrder(request, data):
             quantity=item['quantity'],
         )
     return customer, order
+
+

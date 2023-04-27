@@ -17,12 +17,19 @@ class Customer(models.Model):
 class Tags(models.Model):
     name = models.CharField(max_length=150)
 
+    def __str__(self):
+        return self.name
+
 
 class Categories(models.Model):
     name = models.CharField(max_length=150)
 
+    def __str__(self):
+        return self.name
+
 
 class Product(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     price = models.FloatField(null=True)
     digital = models.BooleanField(default=False, null=True, blank=True)
@@ -30,7 +37,7 @@ class Product(models.Model):
     category = models.ForeignKey(
         Categories, on_delete=models.SET_NULL, null=True)
     skills = models.TextField(null=True)
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True, upload_to='images/')
 
     def __str__(self):
         return self.name
@@ -100,3 +107,11 @@ class ShippingAddress(models.Model):
 
     def __str__(self):
         return self.address
+
+
+class Review(models.Model):
+    name = models.CharField(max_length=150)
+    email = models.EmailField(max_length=150)
+    review = models.TextField()
+    save_my = models.BooleanField(null=True, blank=True)
+    created = models.DateTimeField(auto_now_add=True, null=True, blank=True)

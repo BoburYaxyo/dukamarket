@@ -1,36 +1,37 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
+from shopping.utils import cartview
 # Create your views here.
-
-
+from products.models import Cart
+from .forms import ReviewForm
 from django.shortcuts import render
 from django.http import JsonResponse
 import json
 import datetime
 from .models import *
 from .utils import cookieCart, cartData, guestOrder
+from products.forms import CartForm
 
 
 def shop(request):
+    
     data = cartData(request)
-
     cartItems = data['cartItems']
     order = data['order']
     items = data['items']
-
+    
     products = Product.objects.all()
+ 
+
+    
     context = {'products': products, 'cartItems': cartItems}
     return render(request, 'shop.html', context)
 
 
 def cart(request):
-    data = cartData(request)
 
-    cartItems = data['cartItems']
-    order = data['order']
-    items = data['items']
-
-    context = {'items': items, 'order': order, 'cartItems': cartItems}
+    myctx = cartview(request)
+    
+    context = {**myctx,}
     return render(request, 'cart.html', context)
 
 
