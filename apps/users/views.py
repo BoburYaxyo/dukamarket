@@ -16,7 +16,7 @@ from django.http import JsonResponse
 import json
 import datetime
 from .models import *
-from shopping.utils import cookieCart, cartData, guestOrder
+
 
 
 def login_user(request):
@@ -82,15 +82,11 @@ def register(request):
 
     return render(request, 'login.html', context)
 
-
+@login_required(login_url='login')
 def checkout(request):
-    data = cartData(request)
-
-    cartItems = data['cartItems']
-    order = data['order']
-    items = data['items']
-
-    context = {'items': items, 'order': order, 'cartItems': cartItems}
+    
+    
+    context = {}
     return render(request, 'checkout.html', context)
 
 

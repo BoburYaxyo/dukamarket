@@ -505,13 +505,13 @@
                                             </div>
                                         </div>
                 
-                                        {% for product in products %}
+                                        {% for product in products  %}
                                         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                                             <div class="product__item product__item-d">
                                                 <div class="product__thumb fix">
                                                     <div class="product-image w-img">
                                                         <a href="{% url 'product-details' %}">
-                                                            <img src="{{product.imageURL}}" alt="product">
+                                                            <img src="{{product.imageURL}}" style="height: 240px;" alt="product">
                                                         </a>
                                                     </div>
                                                     <div class="product-action">
@@ -519,7 +519,7 @@
                                                             <i class="fal fa-eye"></i>
                                                             <i class="fal fa-eye"></i>
                                                         </a>
-                                                        <a href="#" class="icon-box icon-box-1">
+                                                        <a href="{% url 'add-wish' product.id %}" class="icon-box icon-box-1">
                                                             <i class="fal fa-heart"></i>
                                                             <i class="fal fa-heart"></i>
                                                         </a>
@@ -546,7 +546,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="product__add-cart-s text-center">
-                                                    <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+                                                    <a href="{% url 'add-cart' product.id %}" class="cart-btn d-flex mb-10 align-items-center justify-content-center w-100">
+                                                    Add to Cart
+                                                    </a>
                                                     <button type="button" class="wc-checkout d-flex align-items-center justify-content-center w-100" data-bs-toggle="modal" data-bs-target="#productModalId">
                                                         Quick View
                                                     </button>
@@ -554,55 +556,6 @@
                                             </div>
                                         </div>
                                         {% endfor %}
-                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                                            <div class="product__item product__item-d">
-                                                <div class="product__thumb fix">
-                                                    <div class="product-image w-img">
-                                                        <a href="{% url 'product-details' %}">
-                                                            <img src="/static/assets/img/product/tp-5.jpg" alt="product">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-action">
-                                                        <a href="#" class="icon-box icon-box-1" data-bs-toggle="modal" data-bs-target="#productModalId">
-                                                            <i class="fal fa-eye"></i>
-                                                            <i class="fal fa-eye"></i>
-                                                        </a>
-                                                        <a href="#" class="icon-box icon-box-1">
-                                                            <i class="fal fa-heart"></i>
-                                                            <i class="fal fa-heart"></i>
-                                                        </a>
-                                                        <a href="#" class="icon-box icon-box-1">
-                                                            <i class="fal fa-layer-group"></i>
-                                                            <i class="fal fa-layer-group"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="product__content-3">
-                                                    <h6><a href="{% url 'product-details' %}">Solo3 Wireless On-Ear Headphones</a></h6>
-                                                    <div class="rating mb-5">
-                                                        <ul>
-                                                            <li><a href="#"><i class="fal fa-star"></i></a></li>
-                                                            <li><a href="#"><i class="fal fa-star"></i></a></li>
-                                                            <li><a href="#"><i class="fal fa-star"></i></a></li>
-                                                            <li><a href="#"><i class="fal fa-star"></i></a></li>
-                                                            <li><a href="#"><i class="fal fa-star"></i></a></li>
-                                                        </ul>
-                                                        <span>(01 review)</span>
-                                                    </div>
-                                                    <div class="price mb-10">
-                                                        <span>$140-$150</span>
-                                                    </div>
-                                                </div>
-                                                <div class="product__add-cart-s text-center">
-                                                    <button type="button" class="cart-btn d-flex mb-10 align-items-center justify-content-center w-100">
-                                                    Add to Cart
-                                                    </button>
-                                                    <button type="button" class="wc-checkout d-flex align-items-center justify-content-center w-100" data-bs-toggle="modal" data-bs-target="#productModalId">
-                                                        Quick View
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                                             <div class="product__item product__item-d">
                                                 <div class="product__thumb fix">

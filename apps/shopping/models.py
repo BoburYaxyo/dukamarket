@@ -37,7 +37,7 @@ class Product(models.Model):
     category = models.ForeignKey(
         Categories, on_delete=models.SET_NULL, null=True)
     skills = models.TextField(null=True)
-    image = models.ImageField(null=True, blank=True, upload_to='images/')
+    image = models.ImageField(null=True, blank=True, upload_to='images/', default='images/default.jpg')
 
     def __str__(self):
         return self.name

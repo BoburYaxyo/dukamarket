@@ -55,19 +55,16 @@
                                           <th class="product-remove">Remove</th>
                                        </tr>
                                     </thead>
+                             
                                     <tbody>
                                        {% for item in cartitems %}
                                        <tr>
-                                          <td class="product-thumbnail"><a href="{% url 'product-details' %}"><img src="/static/assets/img/cart/shop-p-10.jpg" alt=""></a></td>
-                                          <td class="product-name"><a href="{% url 'product-details' %}">{{item.product.name}}</a></td>
-                                          <td class="product-price"><span class="amount">{{item.product.price|floatformat:2}}</span></td>
+                                          <td class="product-thumbnail"><a href="{% url 'product-details' %}"><img src="{{ item.imageURL }}" alt=""></a></td>
+                                          <td class="product-name"><a href="{% url 'product-details' %}">{{item.name}}</a></td>
+                                          <td class="product-price"><span class="amount">{{item.price|floatformat:2}}</span></td>
                                           <div style="flex:1">
                                              <p class="quantity"></p>
-                                             <div class="quantity">
-                                                <img data-product="" data-action="add" class="chg-quantity update-cart" src="/static/images/arrow-up.png">
-                                          
-                                                <img data-product="" data-action="remove" class="chg-quantity update-cart" src="/static/images/arrow-down.png">
-                                             </div>
+               
                                           </div>
                                           <td class="product-subtotal"><span class="amount">$</span></td>
                                           <td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
@@ -76,6 +73,7 @@
                                     </tbody>
                               </table>
                            </div>
+                         
                            <div class="row">
                               <div class="col-12">
                                     <div class="coupon-all">
