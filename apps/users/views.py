@@ -1,4 +1,3 @@
-
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 
@@ -16,7 +15,6 @@ from django.http import JsonResponse
 import json
 import datetime
 from .models import *
-
 
 
 def login_user(request):
@@ -82,10 +80,10 @@ def register(request):
 
     return render(request, 'login.html', context)
 
+
 @login_required(login_url='login')
 def checkout(request):
-    
-    
+
     context = {}
     return render(request, 'checkout.html', context)
 

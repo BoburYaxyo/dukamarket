@@ -1,7 +1,7 @@
 import json
 from .models import *
 from django.db.models import Sum
-from products.models import Cart, Wishlist
+from products.models import Cart, Wishist
 
 
 
@@ -27,7 +27,7 @@ def wishview(request):
     qyctx["wishProductsCount"] = 0
 
     if request.user.is_authenticated:
-        wishProducts: Wishlist = Wishlist.objects.filter(
+        wishProducts: Wishist = Wishist.objects.filter(
             user=request.user).prefetch_related("products").first()
 
         if wishProducts:

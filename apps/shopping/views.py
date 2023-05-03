@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 from shopping.utils import cartview, wishview
 # Create your views here.
-from products.models import Cart, Wishlist
+from products.models import Cart, Wishist
 from .forms import ReviewForm
 from django.http import JsonResponse
 import json
@@ -22,11 +22,12 @@ def addCartView(request, id) -> None:
 
     return redirect('home')
 
+
 @login_required(login_url='login')
 def addWishlistView(request, id) -> None:
 
     product: Product = Product.objects.get(id=id)
-    wishlist, _ = Wishlist.objects.get_or_create(user=request.user)
+    wishlist, _ = Wishist.objects.get_or_create(user=request.user)
     wishlist.products.add(product)
     wishlist.save()
 
@@ -35,7 +36,6 @@ def addWishlistView(request, id) -> None:
 
 @login_required(login_url='login')
 def shop(request):
-
 
     products = Product.objects.all()
     myctx = cartview(request)
@@ -52,10 +52,5 @@ def shop(request):
 def cart(request):
     myctx = cartview(request)
 
-    context = {**myctx,}
+    context = {**myctx, }
     return render(request, 'cart.html', context)
-
-
-
-
-

@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from shopping.models import Product
 
 
-class Wishlist(models.Model):
+class Wishist(models.Model):
     user = models.OneToOneField(
         User, null=True, blank=True, on_delete=models.PROTECT)
     products = models.ManyToManyField(
