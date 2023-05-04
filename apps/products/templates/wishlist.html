@@ -60,7 +60,7 @@
                                             <td class="product-name"><a href="{% url 'product-details' %}">{{item.name}}</a></td>
                                             <td class="product-price"><span class="amount">{{item.price}}</span></td>
                                             <td class="product-quantity">
-                                                <button class="tp-btn-h1" type="submit">Add To Cart</button>
+                                                <a href="{% url 'add-cart' product.id %}" class="tp-btn-h1">Add To Cart</a>
                                             </td>
 
                                             <td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>

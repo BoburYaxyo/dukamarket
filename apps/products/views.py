@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from shopping.models import Product, Review
 from shopping.forms import ReviewForm
 # Create your views here.
+from django.contrib.auth.decorators import login_required
 from shopping.utils import cartview, wishview
 from django.contrib import messages
 from .models import Wishist

@@ -54,3 +54,26 @@ def cart(request):
 
     context = {**myctx, }
     return render(request, 'cart.html', context)
+
+@login_required(login_url='login')
+def removeWishlistView(request, id: int) -> None:
+    wishProducts: Wishist = Wishist.objects.filter(
+        user=request.user).prefetch_related("products").first()
+    if wishProducts:
+        wishItem = wishProducts.products.get(id=id)
+        wishProducts.products.remove(wishItem)
+
+    return redirect('wishlist')
+
+
+@login_required(login_url='login')
+def removeCartView(request, id: int) -> None:
+    cartProducts: Cart = Cart.objects.filter(
+        user=request.user).prefetch_related("products").first()
+    if cartProducts:
+        cartItem = cartProducts.products.get(id=id)
+        cartProducts.products.remove(cartItem)
+        messages.add_message(request, messages.INFO,
+                             'Savatchadan muofaqqiyatli o\'chirildi ✅')
+
+    return redirect('cart')
