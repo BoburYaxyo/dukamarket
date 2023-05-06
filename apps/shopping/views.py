@@ -2,12 +2,13 @@ from django.shortcuts import render, redirect
 
 from shopping.utils import cartview, wishview
 # Create your views here.
-from products.models import Cart, Wishist
+from products.models import Cart, Wishist, Product
 from .forms import ReviewForm
 from django.http import JsonResponse
 import json
 import datetime
 from .models import *
+from django.contrib import messages
 from products.forms import CartForm
 from django.contrib.auth.decorators import login_required
 
@@ -43,7 +44,8 @@ def shop(request):
     context = {
         **myctx,
         **qyctx,
-        'products': products
+        'products': products,
+
     }
     return render(request, 'shop.html', context)
 
@@ -74,6 +76,6 @@ def removeCartView(request, id: int) -> None:
         cartItem = cartProducts.products.get(id=id)
         cartProducts.products.remove(cartItem)
         messages.add_message(request, messages.INFO,
-                             'Savatchadan muofaqqiyatli o\'chirildi ✅')
+                             'Savatchadan muvaffaqqiyatli o\'chirildi ✅')
 
     return redirect('cart')

@@ -28,11 +28,13 @@ class Categories(models.Model):
         return self.name
 
 
+
 class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     price = models.FloatField(null=True)
     digital = models.BooleanField(default=False, null=True, blank=True)
+    color = models.CharField(max_length=150, null=True, blank=True)
     tags = models.ForeignKey(Tags, on_delete=models.SET_NULL, null=True)
     category = models.ForeignKey(
         Categories, on_delete=models.SET_NULL, null=True)

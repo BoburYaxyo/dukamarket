@@ -2,18 +2,20 @@ from django.shortcuts import render
 from shopping.models import Product
 from shopping.utils import cartview, wishview
 from django.contrib.auth.decorators import login_required
+from .utils import ProductFilter
 
 
- 
 @login_required(login_url='login')
 def home(request):
+    f = ProductFilter(request.GET, queryset=Product.objects.all())
     product=Product.objects.all()
     myctx = cartview(request)
     qyctx = wishview(request)
     context = {
         **myctx,
         **qyctx,
-        'product': product
+        'product': product,
+        'filter': f
     }
 
     return render(request, 'home.html', context)

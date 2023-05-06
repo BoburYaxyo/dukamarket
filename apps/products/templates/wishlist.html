@@ -49,7 +49,7 @@
                                             <th class="cart-product-name">Product</th>
                                             <th class="product-price">Unit Price</th>
                                             <th class="product-quantity">Quantity</th>
-                                            <th class="product-subtotal">Total</th>
+                                       
                                             <th class="product-remove">Remove</th>
                                         </tr>
                                     </thead>
@@ -60,10 +60,10 @@
                                             <td class="product-name"><a href="{% url 'product-details' %}">{{item.name}}</a></td>
                                             <td class="product-price"><span class="amount">{{item.price}}</span></td>
                                             <td class="product-quantity">
-                                                <a href="{% url 'add-cart' product.id %}" class="tp-btn-h1">Add To Cart</a>
+                                                <a href="{% url 'add-cart' item.id %}" class="tp-btn-h1">Add To Cart</a>
                                             </td>
 
-                                            <td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
+                                            <td class="product-remove"><a href="{% url 'rem-wish' item.id %}"><i class="fa fa-times"></i></a></td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>

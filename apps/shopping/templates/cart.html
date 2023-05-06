@@ -50,8 +50,8 @@
                                           <th class="product-thumbnail">Images</th>
                                           <th class="cart-product-name">Product</th>
                                           <th class="product-price">Unit Price</th>
-                                          <th class="product-quantity">Quantity</th>
-                                          <th class="product-subtotal">Total</th>
+                                        
+                                          
                                           <th class="product-remove">Remove</th>
                                        </tr>
                                     </thead>
@@ -66,8 +66,8 @@
                                              <p class="quantity"></p>
                
                                           </div>
-                                          <td class="product-subtotal"><span class="amount">$</span></td>
-                                          <td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
+                                     
+                                          <td class="product-remove"><a href="{% url 'rem-cart' item.id %}"><i class="fa fa-times"></i></a></td>
                                        </tr>
                                        {% endfor %}
                                     </tbody>

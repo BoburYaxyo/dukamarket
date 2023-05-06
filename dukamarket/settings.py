@@ -40,12 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_filters',
     
-    'products',
-    'blog',
-    'home',
-    'users',
-    'shopping',
+
+    'products.apps.ProductsConfig',
+    'blog.apps.BlogConfig',
+    'home.apps.HomeConfig',
+    'users.apps.UsersConfig',
+    'shopping.apps.ShoppingConfig',
     'ckeditor',
 ]
 
