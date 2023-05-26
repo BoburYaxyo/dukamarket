@@ -30,6 +30,12 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+{
+    "python.analysis.extraPaths": [
+        "./apps"
+    ]
+}
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -48,7 +54,9 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'users.apps.UsersConfig',
     'shopping.apps.ShoppingConfig',
+    'api',
     'ckeditor',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

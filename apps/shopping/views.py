@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from shopping.utils import cartview, wishview
 # Create your views here.
 from products.models import Cart, Wishist, Product
-from .forms import ReviewForm
+# from .forms import ReviewForm
 from django.http import JsonResponse
 import json
 import datetime

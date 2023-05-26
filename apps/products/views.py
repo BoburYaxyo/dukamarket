@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from shopping.models import Product, Review
-from shopping.forms import ReviewForm
+# from shopping.forms import ReviewForm
 # Create your views here.
 from django.contrib.auth.decorators import login_required
 from shopping.utils import cartview, wishview
@@ -9,18 +9,30 @@ from .models import Wishist
 
 
 def single_prooduct(request, pk):
-    productObj = Product.objects.get(id=pk)
-    form = ReviewForm
-    review = Review.objects.all()
+    # productObj = Product.objects.get(id=pk)
+    product = get_object_or_404(Product, id=pk)
+    # review = request.product.reviews.all()
+    # form = ReviewForm
     if request.method == 'POST':
-        form = ReviewForm(request.POST)
-
-        if form.is_valid():
-            form.save()
-        else:
-            messages.success(
-                request, 'An error has occurred during registration')
-    context = {'product': productObj, 'form': form, 'reviews': review}
+        rating = request.POST.get('rating', 3)
+        content = request.POST.get('content', '')
+        
+        
+        if content:
+            review = Review.objects.create(
+                product=product,
+                rating=rating,
+                content=content,
+                created_by = request.user
+            )
+            
+            return redirect('product', pk=pk)
+    #     if form.is_valid():
+    #         form.save()
+    #     else:
+    #         messages.success(
+    #             request, 'An error has occurred during registration')
+    context = {'product': product}
     return render(request, 'product-details.html', context)
 
 

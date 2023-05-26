@@ -4,6 +4,7 @@
 
 
 {% block content %}
+
    <body>
       <!--[if lte IE 9]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
@@ -238,6 +239,7 @@
                             </ul>
                          </div>
                     </div>
+                   
                     <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
                         <div class="product__details-review">
                             <div class="row">
@@ -254,37 +256,71 @@
                                         <span class="review-count">01 Review</span>
                                     </div>
                                 </div>
+                               
                                 <div class="col-xl-8">
+                                    
                                     <div class="review-des-infod">
-                                        <h6>1 review for "<span>{{product.name}}</span>"</h6>
-                                        <div class="review-details-des">
+                                      
+                                  
+                                        <h6>{{product.reviews.count}} review for "<span>{{product.name}}</span>"</h6>
+                                        <div class="review-details-des" style="display: flex; flex-direction:column-reverse;">
+                                        
+                                            {% for review in product.reviews.all %}
+                                           
                                             <div class="author-image mr-15">
+                                              
                                                 <a href="#"><img src="/static/assets/img/author/author-sm-1.jpeg" alt=""></a>
                                             </div>
                                             <div class="review-details-content">
-                                                <div class="str-info">
+                                                <div class="str-info" >
                                                     <div class="review-star mr-15">
+                                                        {% if review.rating == 1 %}
+                                                        <a href="#"><i class="fas fa-star"></i></a>
+                                                        {% elif review.rating == 2 %}
+                                                        <a href="#"><i class="fas fa-star"></i></a>
+                                                        <a href="#"><i class="fas fa-star"></i></a>
+                                                        {% elif review.rating == 3 %}
+                                                        <a href="#"><i class="fas fa-star"></i></a>
+                                                        <a href="#"><i class="fas fa-star"></i></a>
+                                                        <a href="#"><i class="fas fa-star"></i></a>
+                                                        {% elif review.rating == 4 %}
+                                                        <a href="#"><i class="fas fa-star"></i></a>
+                                                        <a href="#"><i class="fas fa-star"></i></a>
+                                                        <a href="#"><i class="fas fa-star"></i></a>
+                                                        <a href="#"><i class="fas fa-star"></i></a>
+                                                        {% elif review.rating == 5 %}
                                                         <a href="#"><i class="fas fa-star"></i></a>
                                                         <a href="#"><i class="fas fa-star"></i></a>
                                                         <a href="#"><i class="fas fa-star"></i></a>
                                                         <a href="#"><i class="fas fa-star"></i></a>
                                                         <a href="#"><i class="fas fa-star"></i></a>
+                                                        {% else %}
+                                                        <a href="#"><i class="fas fa-star"></i></a>
+                                                        <a href="#"><i class="fas fa-star"></i></a>
+                                                        <a href="#"><i class="fas fa-star"></i></a>
+                                                        <a href="#"><i class="fas fa-star"></i></a>
+                                                        <a href="#"><i class="fas fa-star"></i></a>
+                                                        {% endif %}
                                                     </div>
+                                                    
                                                     <div class="add-review-option">
                                                         <a href="#">Add Review</a>
                                                     </div>
                                                 </div>
-                                                {% for review in reviews %}
+                                               
                                                 <div class="name-date mb-30">
-                                                    <h6>{{review.name}}<span>{{review.created}}</span></h6>
+                                                    <h6>@{{review.created_by.username}} <span>{{review.created_at}}</span></h6>
                                                 </div>
-                                                <p>{{review.review}}</p>
+                                                <p>{{review.content}}</p>
                                             </div>
+
                                             {% endfor %}
+                                            
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            {% if request.user.is_authenticated %}
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div class="product__details-comment ">
@@ -302,53 +338,54 @@
                                               <li><a href="#"><i class="fas fa-star"></i></a></li>
                                            </ul>
                                         </div>
+                                      
                                         <div class="comment-input-box">
-                                           <form action="" method='POST'>
-                                            {% csrf_token %}
-                                              <div class="row">
-                                                <div class="col-xxl-6 col-xl-6">
-                                                    <div class="comment-input">
-                                                        <label>Your name</label>
-                                                       <p>{{form.name}}</p>
-                                                    </div>
-                                                 </div>
+                                            <form action="." method="POST">
+                                                {% csrf_token %}
+                                               <div class="row">
                                                  <div class="col-xxl-6 col-xl-6">
-                                                    <div class="comment-input">
-                                                        <label>Your Email</label>
-                                                       <p>{{form.email}}</p>
-                                                    </div>
-                                                 </div>
-                                                 <div class="col-xxl-12">
-                                                    <label>Your Review</label>
-                                                       <span class="comment-input comment-textarea">{{form.review}}</span>
-                                                 </div>
-                                                 <div class="col-xxl-12">
-                                                    <div class="comment-agree d-flex align-items-center mb-25">
-                                                       <div class="form-check">
-                                                        {{form.save_my}}
-                                                          <label class="form-check-label" for="flexCheckDefault">
-                                                        Save my name, email, and website in this browser for the next time I comment.
-                                                          </label>
-                                                        </div>
-                                                    </div>
-                                                 </div>
-                                                 <div class="col-xxl-12">
-                                                    <div class="comment-submit">
-                                                       <button type="submit" class="cart-btn">Submit</button>
-                                                    </div>
-                                                 </div>
-                                              </div>
-                                           </form>
-                                        </div>
-                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- product-details-des-end -->
+                                                     <div class="comment-input">
+                                                        <label>Rating</label><br>
+                                                        <select>
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                        </select>
+                                                     </div>
+                                                  </div>
+                                                  <div class="col-xxl-6 col-xl-6">
+                                                
+                                                  </div>
+                                                  <div class="col-xxl-12">
+                                                    <textarea name="content" placeholder="Your review" class="comment-input comment-textarea"></textarea>
+                                                  </div>
+                                                           <label class="form-check-label" for="flexCheckDefault">
+                                                            Save my name, email, and website in this browser for the next time I comment.
+                                                           </label>
+                                                         </div>
+                                                     </div>
+                                                  </div>
+                                                  <div class="col-xxl-12">
+                                                     <div class="comment-submit">
+                                                        <button type="submit" class="cart-btn">Submit</button>
+                                                     </div>
+                                                  </div>
+                                               </div>
+                                            </form>
+                                         </div>
+                                      </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <!-- product-details-des-end -->
+         {% endif %}
 
         <!-- shop modal start -->
         <div class="modal fade" id="productModalId" tabindex="-1" role="dialog" aria-hidden="true">
@@ -422,11 +459,11 @@
                                         </ul>
                                         </div>
                                         <div class="product__add-review mb-15">
-                                        <span>01 review</span>
+                                        <span>{{ product.reviews.count }}</span>
                                         </div>
                                     </div>
                                     <div class="product__price">
-                                        <span>$109.00 – $307.00</span>
+                                        <span>${{product.price}}</span>
                                     </div>
                                     <div class="product__modal-des mt-20 mb-15">
                                         <ul>
@@ -483,4 +520,5 @@
 
    </body>
 </html>
+
 {% endblock content %}

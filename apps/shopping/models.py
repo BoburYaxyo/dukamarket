@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.core.validators import MaxValueValidator, MinValueValidator
 # Create your models here.
 
 
@@ -28,18 +28,19 @@ class Categories(models.Model):
         return self.name
 
 
-
 class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     price = models.FloatField(null=True)
     digital = models.BooleanField(default=False, null=True, blank=True)
+    # reviews = models.ManyToManyField(Review, related_name='reviews')
     color = models.CharField(max_length=150, null=True, blank=True)
     tags = models.ForeignKey(Tags, on_delete=models.SET_NULL, null=True)
     category = models.ForeignKey(
         Categories, on_delete=models.SET_NULL, null=True)
     skills = models.TextField(null=True)
-    image = models.ImageField(null=True, blank=True, upload_to='images/', default='images/default.jpg')
+    image = models.ImageField(
+        null=True, blank=True, upload_to='images/', default='images/default.jpg')
 
     def __str__(self):
         return self.name
@@ -112,8 +113,8 @@ class ShippingAddress(models.Model):
 
 
 class Review(models.Model):
-    name = models.CharField(max_length=150)
-    email = models.EmailField(max_length=150)
-    review = models.TextField()
-    save_my = models.BooleanField(null=True, blank=True)
-    created = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    product = models.ForeignKey(Product, related_name="reviews", on_delete=models.CASCADE)
+    rating = models.IntegerField(default=3)
+    content = models.TextField()
+    created_by = models.ForeignKey(User, related_name="reviews", on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
