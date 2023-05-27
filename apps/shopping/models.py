@@ -1,3 +1,4 @@
+from urllib import request
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
@@ -28,13 +29,28 @@ class Categories(models.Model):
         return self.name
 
 
+class Rating(models.Model):
+    rating = models.PositiveIntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)])
+
+    def __str__(self):
+        return str(self.rating)
+
+
+class Colors(models.Model):
+    name = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name
+
+
 class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     price = models.FloatField(null=True)
     digital = models.BooleanField(default=False, null=True, blank=True)
     # reviews = models.ManyToManyField(Review, related_name='reviews')
-    color = models.CharField(max_length=150, null=True, blank=True)
+    color = models.ForeignKey(Colors, on_delete=models.CASCADE)
     tags = models.ForeignKey(Tags, on_delete=models.SET_NULL, null=True)
     category = models.ForeignKey(
         Categories, on_delete=models.SET_NULL, null=True)
@@ -44,6 +60,17 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_rating(self):
+        reviews_total = 0
+
+        for review in self.reviews.all():
+            reviews_total += int(review.rating)
+
+        if reviews_total > 0:
+            return reviews_total / self.reviews.count()
+        
+        return 0
 
     @property
     def imageURL(self):
@@ -113,8 +140,10 @@ class ShippingAddress(models.Model):
 
 
 class Review(models.Model):
-    product = models.ForeignKey(Product, related_name="reviews", on_delete=models.CASCADE)
-    rating = models.IntegerField(default=3)
+    product = models.ForeignKey(
+        Product, related_name="reviews", on_delete=models.CASCADE)
+    rating = models.CharField(max_length=200)
     content = models.TextField()
-    created_by = models.ForeignKey(User, related_name="reviews", on_delete=models.CASCADE)
+    created_by = models.ForeignKey(
+        User, related_name="reviews", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)

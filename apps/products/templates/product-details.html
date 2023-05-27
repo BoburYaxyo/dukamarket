@@ -137,7 +137,7 @@
                                     <button class="nav-link" id="aditional-tab" data-bs-toggle="tab" data-bs-target="#aditional" type="button" role="tab" aria-controls="aditional" aria-selected="false">Additional information</button>
                                   </li>
                                 <li class="nav-item" role="presentation">
-                                  <button class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review" type="button" role="tab" aria-controls="review" aria-selected="false">Reviews (1) </button>
+                                  <button class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review" type="button" role="tab" aria-controls="review" aria-selected="false">Reviews ({{product.reviews.count}}) </button>
                                 </li>
                               </ul>
                         </div>
@@ -245,7 +245,7 @@
                             <div class="row">
                                 <div class="col-xl-4">
                                     <div class="review-rate">
-                                        <h5>5.00</h5>
+                                        <h5>{{product.get_rating}}</h5>
                                         <div class="review-star">
                                             <a href="#"><i class="fas fa-star"></i></a>
                                             <a href="#"><i class="fas fa-star"></i></a>
@@ -253,7 +253,7 @@
                                             <a href="#"><i class="fas fa-star"></i></a>
                                             <a href="#"><i class="fas fa-star"></i></a>
                                         </div>
-                                        <span class="review-count">01 Review</span>
+                                        <span class="review-count">0{{product.reviews.count}} Review</span>
                                     </div>
                                 </div>
                                
@@ -266,7 +266,7 @@
                                         <div class="review-details-des" style="display: flex; flex-direction:column-reverse;">
                                         
                                             {% for review in product.reviews.all %}
-                                           
+                                           <div style="padding-top: -20px; display: flex;">
                                             <div class="author-image mr-15">
                                               
                                                 <a href="#"><img src="/static/assets/img/author/author-sm-1.jpeg" alt=""></a>
@@ -274,21 +274,21 @@
                                             <div class="review-details-content">
                                                 <div class="str-info" >
                                                     <div class="review-star mr-15">
-                                                        {% if review.rating == 1 %}
+                                                        {% if review.rating == '1' %}
                                                         <a href="#"><i class="fas fa-star"></i></a>
-                                                        {% elif review.rating == 2 %}
-                                                        <a href="#"><i class="fas fa-star"></i></a>
-                                                        <a href="#"><i class="fas fa-star"></i></a>
-                                                        {% elif review.rating == 3 %}
+                                                        {% elif review.rating == '2' %}
                                                         <a href="#"><i class="fas fa-star"></i></a>
                                                         <a href="#"><i class="fas fa-star"></i></a>
-                                                        <a href="#"><i class="fas fa-star"></i></a>
-                                                        {% elif review.rating == 4 %}
+                                                        {% elif review.rating == '3' %}
                                                         <a href="#"><i class="fas fa-star"></i></a>
                                                         <a href="#"><i class="fas fa-star"></i></a>
                                                         <a href="#"><i class="fas fa-star"></i></a>
+                                                        {% elif review.rating == '4' %}
                                                         <a href="#"><i class="fas fa-star"></i></a>
-                                                        {% elif review.rating == 5 %}
+                                                        <a href="#"><i class="fas fa-star"></i></a>
+                                                        <a href="#"><i class="fas fa-star"></i></a>
+                                                        <a href="#"><i class="fas fa-star"></i></a>
+                                                        {% elif review.rating == '5' %}
                                                         <a href="#"><i class="fas fa-star"></i></a>
                                                         <a href="#"><i class="fas fa-star"></i></a>
                                                         <a href="#"><i class="fas fa-star"></i></a>
@@ -309,11 +309,12 @@
                                                 </div>
                                                
                                                 <div class="name-date mb-30">
-                                                    <h6>@{{review.created_by.username}} <span>{{review.created_at}}</span></h6>
+                                                    <h6>@{{review.created_by.username}} <span>{{review.created_at|date:"y-m-d" }}</span></h6>
                                                 </div>
                                                 <p>{{review.content}}</p>
                                             </div>
-
+                                        </div>
+                                            <hr>
                                             {% endfor %}
                                             
                                         </div>
@@ -346,13 +347,12 @@
                                                  <div class="col-xxl-6 col-xl-6">
                                                      <div class="comment-input">
                                                         <label>Rating</label><br>
-                                                        <select>
+                                                        <select name='rating'>
                                                             <option value="1">1</option>
                                                             <option value="2">2</option>
-                                                            <option value="3">3</option>
+                                                            <option value="3" selected>3</option>
                                                             <option value="4">4</option>
                                                             <option value="5">5</option>
-                                                            <option value="6">6</option>
                                                         </select>
                                                      </div>
                                                   </div>
