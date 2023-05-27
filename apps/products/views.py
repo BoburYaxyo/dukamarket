@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from shopping.models import Product, Review
+from shopping.models import Product, Review, Categories
 # from shopping.forms import ReviewForm
 # Create your views here.
 from django.contrib.auth.decorators import login_required
@@ -13,6 +13,7 @@ def single_prooduct(request, pk):
     product = get_object_or_404(Product, id=pk)
     # review = request.product.reviews.all()
     # form = ReviewForm
+    category = Categories.objects.all()
     if request.method == 'POST':
         rating = request.POST.get('rating', 3)
         content = request.POST.get('content', '')
@@ -32,16 +33,18 @@ def single_prooduct(request, pk):
     #     else:
     #         messages.success(
     #             request, 'An error has occurred during registration')
-    context = {'product': product}
+    context = {'product': product, 'category': category}
     return render(request, 'product-details.html', context)
 
 
 def wishlist(request):
     myctx = cartview(request)
     qyctx = wishview(request)
+    category = Categories.objects.all()
     context = {
         **myctx,
         **qyctx,
+        'category': category
     }
     return render(request, 'wishlist.html', context)
 

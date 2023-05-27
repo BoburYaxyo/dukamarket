@@ -161,11 +161,15 @@
                     </div>
                     <div class="col-xl-5 col-lg-4 d-none d-lg-block">
                         <div class="header__search">
-                            <form id="searchForm" action="{% url 'shop' %}" method="get">
+                            <form id="searchForm" action="{% url 'shop' %}" method="GET">
                                 <div class="header__search-box">
+                                    <input class="search-input search-input-2" name="q" type="text" placeholder="I'm shopping for...">
                                     <button class="button button-2 button-3" type="submit"><i class="far fa-search"></i></button>
                                 </div>
-                       
+                                <div class="header__search-cat">
+                                  
+                                        All Categories
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -264,57 +268,30 @@
     <div class="header__bottom d-none d-lg-block">
         <div class="container">
             <div class="box-items-inner pt-10 pb-10">
+                {% for categor in category %}
                 <div class="box-item">
-                    <a href="{% url 'shop' %}">
+                    <a href="{% url 'product-details' %}?q={{categor.name}}">
+                        {% if categor.name == "Laptop & Computer" %}
                         <i class="fal fa-desktop"></i>
-                    Laptop <br> & Computer
-                    </a>
-                </div>
-                <div class="box-item">
-                    <a href="{% url 'shop' %}">
+                        {% elif categor.name == "Tablets & Mobile Phones" %}
                         <i class="fal fa-mobile"></i>
-                    Tablets <br> & Mobile Phones
-                    </a>
-                </div>
-                <div class="box-item">
-                    <a href="{% url 'shop' %}">
+                        {% elif categor.name == "Digitals & Electronics" %}
                         <i class="fal fa-router"></i>
-                    Digitals <br> & Electronics
-                    </a>
-                </div>
-                <div class="box-item">
-                    <a href="{% url 'shop' %}">
+                        {% elif categor.name == "Camera & Accesories" %}
                         <i class="fal fa-webcam"></i>
-                    Camera <br> & Accesories
-                    </a>
-                </div>
-                <div class="box-item">
-                    <a href="{% url 'shop' %}">
+                        {% elif categor.name == "Decor & Furniture" %}
                         <i class="fal fa-bed-alt"></i>
-                    Decor <br> & Furniture
-                    </a>
-                </div>
-                <div class="box-item">
-                    <a href="{% url 'shop' %}">
+                        {% elif categor.name == "Fashion & Clothing" %}
                         <i class="fal fa-tshirt"></i>
-                    Fashion <br> & Clotheing
-                    </a>
-                </div>
-                <div class="box-item d-lg-none">
-                    <a href="{% url 'shop' %}">
-                        <i class="fal fa-hat-chef"></i>
-                    Garden <br> & Home Kitchen
-                    </a>
-                </div>
-                <div class="box-item d-lg-none d-xl-block">
-                    <a href="{% url 'shop' %}">
+                        {% elif categor.name == "Audio & Headphones" %}
                         <i class="fal fa-speaker"></i>
-                    Audio <br> & Headphones
+                        {% endif %}
+                        {{ categor.name }}
                     </a>
                 </div>
+                {% endfor %}
             </div>
         </div> 
     </div>
  </header>
-
  <!-- header-end -->

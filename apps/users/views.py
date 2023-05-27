@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import CustomUserCreationForm
 from django.contrib.auth import login, authenticate, logout
 # Create your views here.
-
+from shopping.models import Categories
 from django.shortcuts import render
 from django.http import JsonResponse
 import json
@@ -83,10 +83,12 @@ def register(request):
 
 @login_required(login_url='login')
 def checkout(request):
-
-    context = {}
+    category = Categories.objects.all()
+    context = {'category': category}
     return render(request, 'checkout.html', context)
 
 
 def errorim(request):
-    return render(request, '404.html')
+    category = Categories.objects.all()
+    context = {'category': category}
+    return render(request, '404.html', context)
