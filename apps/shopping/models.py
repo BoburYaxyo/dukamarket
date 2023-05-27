@@ -29,16 +29,24 @@ class Categories(models.Model):
         return self.name
 
 
-class Rating(models.Model):
-    rating = models.PositiveIntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(5)])
-
-    def __str__(self):
-        return str(self.rating)
 
 
 class Colors(models.Model):
     name = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name
+
+
+class Brands(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+    
+
+class Sizes(models.Model):
+    name = models.CharField(max_length=10)
 
     def __str__(self):
         return self.name
@@ -54,9 +62,10 @@ class Product(models.Model):
     tags = models.ForeignKey(Tags, on_delete=models.SET_NULL, null=True)
     category = models.ForeignKey(
         Categories, on_delete=models.SET_NULL, null=True)
+    size = models.ForeignKey(Sizes, on_delete=models.SET_NULL, null=True, blank=True)
+    brands = models.ForeignKey(Brands, on_delete=models.SET_NULL, null=True, blank=True)
     skills = models.TextField(null=True)
-    image = models.ImageField(
-        null=True, blank=True, upload_to='images/', default='images/default.jpg')
+    image = models.ImageField(upload_to='images/')
 
     def __str__(self):
         return self.name
@@ -68,8 +77,8 @@ class Product(models.Model):
             reviews_total += int(review.rating)
 
         if reviews_total > 0:
-            return reviews_total / self.reviews.count()
-        
+            return reviews_total // self.reviews.count()
+
         return 0
 
     @property
@@ -147,3 +156,6 @@ class Review(models.Model):
     created_by = models.ForeignKey(
         User, related_name="reviews", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']

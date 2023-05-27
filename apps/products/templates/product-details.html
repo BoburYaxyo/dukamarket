@@ -245,13 +245,35 @@
                             <div class="row">
                                 <div class="col-xl-4">
                                     <div class="review-rate">
-                                        <h5>{{product.get_rating}}</h5>
+                                        <h5>{{product.get_rating}}.0</h5>
                                         <div class="review-star">
+                                            {% if product.get_rating == 1 %}
+                                            <a href="#"><i class="fas fa-star"></i></a>
+                                            {% elif product.get_rating == 2 %}
+                                            <a href="#"><i class="fas fa-star"></i></a>
+                                            <a href="#"><i class="fas fa-star"></i></a>
+                                            {% elif product.get_rating == 3 %}
+                                            <a href="#"><i class="fas fa-star"></i></a>
+                                            <a href="#"><i class="fas fa-star"></i></a>
+                                            <a href="#"><i class="fas fa-star"></i></a>
+                                            {% elif product.get_rating == 4 %}
+                                            <a href="#"><i class="fas fa-star"></i></a>
+                                            <a href="#"><i class="fas fa-star"></i></a>
+                                            <a href="#"><i class="fas fa-star"></i></a>
+                                            <a href="#"><i class="fas fa-star"></i></a>
+                                            {% elif product.get_rating == 5 %}
                                             <a href="#"><i class="fas fa-star"></i></a>
                                             <a href="#"><i class="fas fa-star"></i></a>
                                             <a href="#"><i class="fas fa-star"></i></a>
                                             <a href="#"><i class="fas fa-star"></i></a>
                                             <a href="#"><i class="fas fa-star"></i></a>
+                                            {% else %}
+                                            <a href="#"><i class="fas fa-star"></i></a>
+                                            <a href="#"><i class="fas fa-star"></i></a>
+                                            <a href="#"><i class="fas fa-star"></i></a>
+                                            <a href="#"><i class="fas fa-star"></i></a>
+                                            <a href="#"><i class="fas fa-star"></i></a>
+                                            {% endif %}
                                         </div>
                                         <span class="review-count">0{{product.reviews.count}} Review</span>
                                     </div>

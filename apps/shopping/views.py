@@ -40,16 +40,21 @@ def addWishlistView(request, id) -> None:
 def shop(request):
     category = Categories.objects.all()
     colors = Colors.objects.all()
+    brands = Brands.objects.all()
+    sizes = Sizes.objects.all()
+    tags = Tags.objects.all()
     q = request.GET.get('q') if request.GET.get('q') != None else ''
     rooms = Product.objects.filter(
         Q(category__name__icontains=q) |
         Q(name__icontains=q) |
         Q(skills__icontains=q)|
         Q(tags__name__icontains=q)|
-        Q(color__name__icontains=q)
-        
+        Q(color__name__icontains=q)|
+        Q(size__name__icontains=q)| 
+        Q(brands__name__icontains=q)
     )
-
+    room_count = rooms.count()
+    
     myctx = cartview(request)
     qyctx = wishview(request)
     context = {
@@ -57,7 +62,11 @@ def shop(request):
         **qyctx,
         'products': rooms,
         'category': category,
-        'colors' : colors
+        'colors' : colors,
+        'tags' : tags,
+        'sizes': sizes,
+        'brands':brands,
+        'room_count': room_count,   
     }
     return render(request, 'shop.html', context)
 
