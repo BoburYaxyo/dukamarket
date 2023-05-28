@@ -102,81 +102,25 @@
                             <h5 class="pt-title">Special Offers</h5>
                             <div class="product__sm mt-20">
                                 <ul>
+                                    {% for product in itemlar %}
+                                    {% if product.special_offers %}
                                     <li class="product__sm-item d-flex align-items-center">
                                         <div class="product__sm-thumb mr-20">
-                                            <a href="{% url 'product-details' %}">
-                                                <img src="/static/assets/img/product/sm-1.jpg" alt="">
+                                            <a href="{% url 'product' product.id %}">
+                                                <img src="{{product.imageURL}}" alt="">
                                             </a>
                                         </div>
                                         <div class="product__sm-content">
                                             <h5 class="product__sm-title">
-                                                <a href="{% url 'product-details' %}">Classic Leather Backpack Daypack 2022</a>
+                                                <a href="{% url 'product' product.id %}">{{product.name}}</a>
                                             </h5>
                                             <div class="product__sm-price">
-                                                <span class="price">$300.00</span>
+                                                <span class="price">{{product.price}}0$</span>
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="product__sm-item d-flex align-items-center">
-                                        <div class="product__sm-thumb mr-20">
-                                            <a href="{% url 'product-details' %}">
-                                                <img src="/static/assets/img/product/sm-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product__sm-content">
-                                            <h5 class="product__sm-title">
-                                                <a href="{% url 'product-details' %}">Samsung Galaxy A12, 32GB, Black - (Locked)</a>
-                                            </h5>
-                                            <div class="product__sm-price">
-                                                <span class="price">$150.00</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="product__sm-item d-flex align-items-center">
-                                        <div class="product__sm-thumb mr-20">
-                                            <a href="{% url 'product-details' %}">
-                                                <img src="/static/assets/img/product/sm-3.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product__sm-content">
-                                            <h5 class="product__sm-title">
-                                                <a href="#">Coffee Maker AH240a Full Function</a>
-                                            </h5>
-                                            <div class="product__sm-price">
-                                                <span class="price">$300.00</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="product__sm-item d-flex align-items-center">
-                                        <div class="product__sm-thumb mr-20">
-                                            <a href="{% url 'product-details' %}">
-                                                <img src="/static/assets/img/product/sm-4.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product__sm-content">
-                                            <h5 class="product__sm-title">
-                                                <a href="{% url 'product-details' %}">Imported Wooden Felt Cushion Chair</a>
-                                            </h5>
-                                            <div class="product__sm-price">
-                                                <span class="price">$120.00</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="product__sm-item d-flex align-items-center">
-                                        <div class="product__sm-thumb mr-20">
-                                            <a href="{% url 'product-details' %}">
-                                                <img src="/static/assets/img/product/sm-5.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product__sm-content">
-                                            <h5 class="product__sm-title">
-                                                <a href="{% url 'product-details' %}">Sunhouse Decorative Lights - Imported</a>
-                                            </h5>
-                                            <div class="product__sm-price">
-                                                <span class="price">$110.00</span>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    {% endif %}
+                                    {% endfor %}
                                 </ul>
                             </div>
                         </div>

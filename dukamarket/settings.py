@@ -57,12 +57,14 @@ INSTALLED_APPS = [
     'api',
     'ckeditor',
     'rest_framework',
+    'currencies',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -71,7 +73,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'dukamarket.urls'
-
+from django.utils.translation import gettext_lazy as _
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -85,6 +87,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'currencies.context_processors.currencies',
             ],
         },
     },
@@ -126,6 +129,17 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
+LANGUAGES = [
+    ('en', _('English')),
+    ('uz', _('Uzbek')),
+]
+
+LOCALE_PATH = (
+    os.path.join(BASE_DIR, 'locale')
+)
+
+
+DEFAULT_CURRENCY = 'USD'
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -153,3 +167,10 @@ MEDIA_ROOT = BASE_DIR / 'static/images'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'byaxyoxojayev@gmail.com'
+# EMAIL_HOST_PASSWORD = 'lmdtghtlnltaarrn'

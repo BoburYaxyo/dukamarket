@@ -38,6 +38,7 @@ def addWishlistView(request, id) -> None:
 
 @login_required(login_url='login')
 def shop(request):
+    items = Product.objects.all()
     category = Categories.objects.all()
     colors = Colors.objects.all()
     brands = Brands.objects.all()
@@ -67,6 +68,7 @@ def shop(request):
         'sizes': sizes,
         'brands':brands,
         'room_count': room_count,   
+        'itemlar': items,
     }
     return render(request, 'shop.html', context)
 

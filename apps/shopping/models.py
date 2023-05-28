@@ -64,7 +64,10 @@ class Product(models.Model):
         Categories, on_delete=models.SET_NULL, null=True)
     size = models.ForeignKey(Sizes, on_delete=models.SET_NULL, null=True, blank=True)
     brands = models.ForeignKey(Brands, on_delete=models.SET_NULL, null=True, blank=True)
+    sold = models.IntegerField(default=0)
+    free = models.IntegerField(default=0)
     skills = models.TextField(null=True)
+    special_offers = models.BooleanField(default=False, null=True, blank=True)
     image = models.ImageField(upload_to='images/')
 
     def __str__(self):

@@ -1,7 +1,7 @@
 
 {% extends 'main.html' %}
 
-
+{% load i18n %}
 
 {% block content %}
    <body style="background-color: white;">
@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="smblog-content smblog-content-3">
                                     <h6><a href="{% url 'blog-details' %}">Delicious Mixed Grilled Food For The Weekend With The Family And Friends</a></h6>
-                                    <span class="author mb-10">posted by <a href="#">Adlop</a></span>
+                                    <span class="author mb-10">{% trans "posted by" %} <a href="#">Adlop</a></span>
                                     <p>It is accompanied by a case that can contain up to three different diffusers and can be used for dry storage of loose tea. The perfect way to enjoy brewing tea on fruit to...</p>
                                     <div class="smblog-foot pt-15">
                                         <div class="post-readmore">

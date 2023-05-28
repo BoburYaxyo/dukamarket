@@ -1,5 +1,5 @@
-
-
+{% load i18n %}
+{% load currency %}
 <div id="loading">
     <div id="loading-center">
         <div id="loading-center-absolute">
@@ -102,27 +102,49 @@
                     <div class="col-xl-6 col-lg-7">
                         <div class="header-inner-start">
                             <div class="header__currency border-right">
-                                <div class="s-name">
-                                    <span>Language: </span>
-                                </div>
-                                <select>
-                                    <option>English</option>
-                                    <option>Deutsch</option>
-                                    <option>Français</option>
-                                    <option>Espanol</option>
-                                </select>
+                                <form action="{% url 'selectlanguage' %}" method="post">
+                                    {% csrf_token %}
+                                    <input name="next" type="hidden" value="{{ redirect_to }}">
+                                    <select name="language">
+
+                                {% get_current_language as LANGUAGE_CODE %}
+                                {% get_available_languages as LANGUAGES %}
+                                {% get_language_info_list for LANGUAGES as languages %}
+                                {% for language in languages %}
+                                <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                                    {{ language.name_local }} ({{ language.code }})
+                                </option>
+                                {% endfor %}
+
+                                
+                            </select>
+                            <input type="submit" value="Go" />
+                            </form>
                             </div>
                             <div class="header__lang border-right">
-                                <div class="s-name">
-                                    <span>Currency: </span>
-                                </div>
-                                <select>
-                                    <option> USD</option>
-                                    <option>EUR</option>
-                                    <option>INR</option>
-                                    <option>BDT</option>
-                                    <option>BGD</option>
-                                </select>
+                                <form id="currency_switcher" method="POST" action="{% url 'selectcurrency' %}">
+                                    {% csrf_token %}
+                                    <select name="currency" onchange="submit()" >
+                                        {% for curr in CURRENCIES %}
+                                        <option value="{{ curr.code }}"
+                                            {% ifequal curr.code request.session.currency %}selected="selected"{% endifequal %}>
+                                            {{ curr.symbol }} {{ curr.name }}
+                                            
+                                        </option>
+                                        {% endfor %}
+                                    </select>
+
+                                    <noscript>
+                                        <input type="submit" value="Set" />
+                                    </noscript>
+
+                                    <li class="dropdown default-dropdown">
+                                        <form id="currency_switcher" method="POST" action="{% url 'savelangcur' %}">
+                                            {% csrf_token %}
+                                            <input type="submit" value="Save" />
+                                        </form>
+                                    </li>
+                                </form>
                             </div>
                             <div class="support d-none d-sm-block">
                                 <p>Need Help? <a href="tel:+001123456789">+001 123 456 789</a></p>
