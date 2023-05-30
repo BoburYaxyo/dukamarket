@@ -1,6 +1,7 @@
 from rest_framework.serializers import ModelSerializer
 from rest_framework import serializers
 from shopping.models import Product, Review
+from django.utils.translation import gettext_lazy as _
 
 
 class ReviewSerializer(serializers.ModelSerializer):

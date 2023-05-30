@@ -25,10 +25,11 @@
                                    <nav class="breadcrumb-trail breadcrumbs">
                                       <ul class="breadcrumb-menu">
                                          <li class="breadcrumb-trail">
-                                            <a href="/"><span>Home</span></a>
+                                            
+                                            <a href="/"><span>{% trans "Home" %}</span></a>
                                          </li>
                                          <li class="trail-item">
-                                            <span>Blog</span>
+                                            <span>{% trans "Blog" %}</span>
                                          </li>
                                       </ul>
                                    </nav> 
@@ -47,156 +48,33 @@
                <div class="row">
                   <div class="col-xl-8 col-lg-7">
                     <div class="row">
+                        {% for blog in blogs %}
                         <div class="col-xl-6">
                             <div class="single-smblog mb-30">
                                 <div class="smblog-thum">
                                     <div class="blog-image w-img">
-                                        <a href="{% url 'blog-details' %}"><img src="/static/assets/img/blog/sm-b2-1.jpg" alt=""></a>
+                                        <a href="{% url 'blog-details' blog.id %}"><img style="max-height: 222px; min-height: 201.9px;" src="{{blog.imageURL}}" alt=""></a>
                                     </div>
                                     <div class="blog-tag blog-tag-2">
-                                        <a href="{% url 'blog' %}">Food Beverage</a>
+                                        <a href="{% url 'blog' %}">{{blog.name}} {% for blog_tag in blog.btag.all %} {{blog_tag}}{% endfor %}</a>
                                     </div>
                                 </div>
                                 <div class="smblog-content smblog-content-3">
-                                    <h6><a href="{% url 'blog-details' %}">Delicious Mixed Grilled Food For The Weekend With The Family And Friends</a></h6>
-                                    <span class="author mb-10">{% trans "posted by" %} <a href="#">Adlop</a></span>
-                                    <p>It is accompanied by a case that can contain up to three different diffusers and can be used for dry storage of loose tea. The perfect way to enjoy brewing tea on fruit to...</p>
+                                    <h6><a href="{% url 'blog-details' blog.id %}">{{blog.title}}</a></h6>
+                                    <span class="author mb-10">posted by <a href="#">{{blog.posted_by.username}}</a></span>
+                                    <p>{{blog.description}}</p>
                                     <div class="smblog-foot pt-15">
                                         <div class="post-readmore">
-                                            <a href="{% url 'blog-details' %}"> Read More <span class="icon"></span></a>
+                                            <a href="{% url 'blog-details' blog.id %}"> Read More <span class="icon"></span></a>
                                         </div>
                                         <div class="post-date">
-                                            <a href="{% url 'blog-details' %}">Jan 24, 2022</a>
+                                            <a href="{% url 'blog-details' blog.id %}">{{blog.created}}</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-6">
-                            <div class="single-smblog mb-30">
-                                <div class="smblog-thum">
-                                    <div class="blog-image w-img">
-                                        <a href="{% url 'blog-details' %}"><img src="/static/assets/img/blog/sm-b2-2.jpg" alt=""></a>
-                                    </div>
-                                    <div class="blog-tag blog-tag-2">
-                                        <a href="{% url 'blog' %}">Food Beverage</a>
-                                    </div>
-                                </div>
-                                <div class="smblog-content smblog-content-3">
-                                    <h6><a href="{% url 'blog-details' %}">Delicious Grilled Pork For These Family Reunions By The Charcoal Stove</a></h6>
-                                    <span class="author mb-10">posted by <a href="#">Maxon</a></span>
-                                    <p>It is accompanied by a case that can contain up to three different diffusers and can be used for dry storage of loose tea. The perfect way to enjoy brewing tea on fruit to...</p>
-                                    <div class="smblog-foot pt-15">
-                                        <div class="post-readmore">
-                                            <a href="{% url 'blog-details' %}"> Read More <span class="icon"></span></a>
-                                        </div>
-                                        <div class="post-date">
-                                            <a href="{% url 'blog-details' %}">Jan 24, 2022</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6">
-                            <div class="single-smblog mb-30">
-                                <div class="smblog-thum">
-                                    <div class="blog-image w-img">
-                                        <a href="{% url 'blog-details' %}"><img src="/static/assets/img/blog/sm-b2-3.jpg" alt=""></a>
-                                    </div>
-                                    <div class="blog-tag blog-tag-2">
-                                        <a href="{% url 'blog' %}">Food Beverage</a>
-                                    </div>
-                                </div>
-                                <div class="smblog-content smblog-content-3">
-                                    <h6><a href="{% url 'blog-details' %}">Delicious Seasoned Lobster Suitable For Family Summer Holidays</a></h6>
-                                    <span class="author mb-10">posted by <a href="#">Elana</a></span>
-                                    <p>It is accompanied by a case that can contain up to three different diffusers and can be used for dry storage of loose tea. The perfect way to enjoy brewing tea on fruit to...</p>
-                                    <div class="smblog-foot pt-15">
-                                        <div class="post-readmore">
-                                            <a href="{% url 'blog-details' %}"> Read More <span class="icon"></span></a>
-                                        </div>
-                                        <div class="post-date">
-                                            <a href="{% url 'blog-details' %}">Jan 24, 2022</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6">
-                            <div class="single-smblog mb-30">
-                                <div class="smblog-thum">
-                                    <div class="blog-image w-img">
-                                        <a href="{% url 'blog-details' %}"><img src="/static/assets/img/blog/sm-b2-4.jpg" alt=""></a>
-                                    </div>
-                                    <div class="blog-tag blog-tag-2">
-                                        <a href="{% url 'blog' %}">Food Beverage</a>
-                                    </div>
-                                </div>
-                                <div class="smblog-content smblog-content-3">
-                                    <h6><a href="{% url 'blog-details' %}">Grilled Seafood With Delicious and Vegetables and Fruits With Friends</a></h6>
-                                    <span class="author mb-10">posted by <a href="#">Andrew</a></span>
-                                    <p>It is accompanied by a case that can contain up to three different diffusers and can be used for dry storage of loose tea. The perfect way to enjoy brewing tea on fruit to...</p>
-                                    <div class="smblog-foot pt-15">
-                                        <div class="post-readmore">
-                                            <a href="{% url 'blog-details' %}"> Read More <span class="icon"></span></a>
-                                        </div>
-                                        <div class="post-date">
-                                            <a href="{% url 'blog-details' %}">Jan 24, 2022</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6">
-                            <div class="single-smblog mb-30">
-                                <div class="smblog-thum">
-                                    <div class="blog-image w-img">
-                                        <a href="{% url 'blog-details' %}"><img src="/static/assets/img/blog/sm-b2-5.jpg" alt=""></a>
-                                    </div>
-                                    <div class="blog-tag blog-tag-2">
-                                        <a href="{% url 'blog' %}">Digital</a>
-                                    </div>
-                                </div>
-                                <div class="smblog-content smblog-content-3">
-                                    <h6><a href="{% url 'blog-details' %}">Do you know how to people wear headphones properly?</a></h6>
-                                    <span class="author mb-10">posted by <a href="#">Iqbal</a></span>
-                                    <p>It is accompanied by a case that can contain up to three different diffusers and can be used for dry storage of loose tea. The perfect way to enjoy brewing tea on fruit to...</p>
-                                    <div class="smblog-foot pt-15">
-                                        <div class="post-readmore">
-                                            <a href="{% url 'blog-details' %}"> Read More <span class="icon"></span></a>
-                                        </div>
-                                        <div class="post-date">
-                                            <a href="{% url 'blog-details' %}">Jan 24, 2022</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6">
-                            <div class="single-smblog mb-30">
-                                <div class="smblog-thum">
-                                    <div class="blog-image w-img">
-                                        <a href="{% url 'blog-details' %}"><img src="/static/assets/img/blog/sm-b2-6.jpg" alt=""></a>
-                                    </div>
-                                    <div class="blog-tag blog-tag-2">
-                                        <a href="{% url 'blog' %}">Digital</a>
-                                    </div>
-                                </div>
-                                <div class="smblog-content smblog-content-3">
-                                    <h6><a href="{% url 'blog-details' %}">Laptops Become More Common in Everyday Life, why it usefull?</a></h6>
-                                    <span class="author mb-10">posted by <a href="#">Moris</a></span>
-                                    <p>It is accompanied by a case that can contain up to three different diffusers and can be used for dry storage of loose tea. The perfect way to enjoy brewing tea on fruit to...</p>
-                                    <div class="smblog-foot pt-15">
-                                        <div class="post-readmore">
-                                            <a href="{% url 'blog-details' %}"> Read More <span class="icon"></span></a>
-                                        </div>
-                                        <div class="post-date">
-                                            <a href="{% url 'blog-details' %}">Jan 24, 2022</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                     <div class="row">
                         <div class="col-xl-12">
@@ -236,61 +114,33 @@
                                 <div class="widget">
                                     <h6 class="sidebar-title"> Search Here</h6>
                                     <div class="n-sidebar-search">
-                                        <input type="text" placeholder="Search your keyword...">
-                                        <a href="#"><i class="fal fa-search"></i></a>
+                                        <form action="{% url 'blog' %}" method="GET">
+                                        <input name="b" type="text" placeholder="Search your keyword...">
+                                        <a><button type="submit"><i class="fal fa-search"></i></button></a>
+                                    </form>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12">
-                              <div class="widget">
+                              <div class="widget"> 
                                  <h6 class="sidebar-title">Popular Feeds</h6>
                                  <div class="n-sidebar-feed">
                                        <ul>
+                                        {% for blog in blogs %}
                                           <li>
+                                             
                                              <div class="feed-number">
-                                                   <a href="{% url 'blog-details' %}"><img src="/static/assets/img/blog/sm-b-1.jpg" alt=""></a>
+                                                   <a href="{% url 'blog-details' blog.id %}"><img src="{{blog.imageURL}}" alt=""></a>
                                              </div>
                                              <div class="feed-content">
-                                                   <h6><a href="{% url 'blog-details' %}">APL Logistics seeks to be a premier, profitable</a></h6>
+                                                   <h6><a href="{% url 'blog-details' blog.id %}">APL Logistics seeks to be a premier, profitable</a></h6>
                                                    <span class="feed-date">
                                                       <i class="fal fa-calendar-alt"></i> 24th March 2021
                                                    </span>
                                              </div>
                                           </li>
-                                          <li>
-                                             <div class="feed-number">
-                                                   <a href="{% url 'blog-details' %}"><img src="/static/assets/img/blog//sm-b-2.jpg" alt=""></a>
-                                             </div>
-                                             <div class="feed-content">
-                                                   <h6><a href="{% url 'blog-details' %}">Of global supply-chain services to help</a></h6>
-                                                   <span class="feed-date">
-                                                      <i class="fal fa-calendar-alt"></i> 24th March 2021
-                                                   </span>
-                                             </div>
-                                          </li>
-                                          <li>
-                                             <div class="feed-number">
-                                                <a href="{% url 'blog-details' %}"><img src="/static/assets/img/blog//sm-b-3.jpg" alt=""></a>
-                                             </div>
-                                             <div class="feed-content">
-                                                   <h6><a href="{% url 'blog-details' %}">Enable sustainable trade and commerce</a></h6>
-                                                   <span class="feed-date">
-                                                      <i class="fal fa-calendar-alt"></i> 24th March 2021
-                                                   </span>
-                                             </div>
-                                          </li>
-                                          <li>
-                                             <div class="feed-number">
-                                                <a href="{% url 'blog-details' %}"><img src="/static/assets/img/blog//sm-b-4.jpg" alt=""></a>
-                                             </div>
-                                             <div class="feed-content">
-                                                   <h6><a href="{% url 'blog-details' %}">In key markets & region We will accomplish</a>
-                                                   </h6>
-                                                   <span class="feed-date">
-                                                      <i class="fal fa-calendar-alt"></i> 24th March 2021
-                                                   </span>
-                                             </div>
-                                          </li>
+                               
+                                             {% endfor %}
                                        </ul>
                                  </div>
                               </div>
@@ -299,49 +149,18 @@
                                 <div class="widget">
                                     <h6 class="sidebar-title">Categories</h6>
                                     <ul class="n-sidebar-categories">
+                                   {% for category in bcategory %}
                                         <li>
-                                            <a href="{% url 'blog-details' %}">
+                                            <a href="{% url 'blog' %}?b={{category.name}}">
                                                 <div class="single-category p-relative mb-10">
-                                                    Business
-                                                    <span class="category-number">26</span>
+                                                    {{category.name}}
+                                                    <span class="category-number">{{category.blog_set.count}}</span>
                                                 </div>
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="{% url 'blog-details' %}">
-                                                <div class="single-category p-relative mb-10">
-                                                    consultant
-                                                    <span class="category-number">30</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{% url 'blog-details' %}">
-                                                <div class="single-category p-relative mb-10">
-                                                    Creative
-                                                    <span class="category-number">71</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{% url 'blog-details' %}">
-                                                <div class="single-category p-relative mb-10">
-                                                    UI/UX
-                                                    <span class="category-number">56</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{% url 'blog-details' %}">
-                                                <div class="single-category p-relative">
-                                                    Texhnology
-                                                    <span class="category-number">60</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                                    {% endfor %}
+                               
+                   
                             <div class="col-lg-12 col-md-6">
                                 <div class="widget">
                                     <h6 class="sidebar-title">Instagram Feeds</h6>

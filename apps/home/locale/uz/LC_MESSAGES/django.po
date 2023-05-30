@@ -8,20 +8,246 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-28 23:01+0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2023-05-29 20:06+0500\n"
+"PO-Revision-Date: 2023-05-30 10:21+0000\n"
+"Last-Translator: bobur  <byaxyoxojayev@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Translated-Using: django-rosetta 0.9.9\n"
+
+#: apps/home/templates/about.html:15
+msgid "About Us"
+msgstr "Biz Haqimizda"
+
+#: apps/home/templates/about.html:16
+msgid ""
+"A wonderful serenity has taken possession of my entire soul, like these"
+msgstr "Ajoyib bir xotirjamlik butun qalbimni egallab oldi, shu kabilar"
+
+#: apps/home/templates/about.html:16
+msgid "sweet mornings of spring which I enjoy with my whole heart."
+msgstr "butun qalbim bilan zavqlanadigan bahorning shirin tonglari."
+
+#: apps/home/templates/about.html:33
+msgid "ABOUT OUR ONLINE STORE"
+msgstr "ONLAYN MAGAZINIMIZ HAQIDA"
+
+#: apps/home/templates/about.html:34 apps/home/views.py:25
+msgid "Hello"
+msgstr "Salom"
+
+#: apps/home/templates/about.html:35
+msgid "With 25+ Years Of Experience"
+msgstr "25+ yillik tajribaga ega"
+
+#: apps/home/templates/about.html:36
+msgid "Over 25 years Dukamarket helping companies reach their"
+msgstr ""
+"25 yildan ortiq vaqt mobaynida Dukamarket kompaniyalarga o'z maqsadlariga "
+"erishishda yordam beradi"
+
+#: apps/home/templates/about.html:36
+msgid "financial and branding goals."
+msgstr "moliyaviy va brending maqsadlari."
+
+#: apps/home/templates/about.html:37
+msgid ""
+"The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis "
+"autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie "
+"consequat, vel illum dolore eu feugiat nulla facilisis. For me, the most "
+"important part of improving at photography."
+msgstr ""
+"Aniqlash uchun past osilgan mevalarda choy pishirishdan zavqlanishning "
+"mukammal usuli. Ammo duis yoki uning iriure og'rig'i vulputatdagi "
+"hendreritda molestie consequat bo'lishni xohlaydi, yoki bu og'riq eu feugiat"
+" no facilisis. Men uchun fotografiyani yaxshilashning eng muhim qismi."
+
+#: apps/home/templates/about.html:56
+msgid "HOW IT WORKS"
+msgstr "U QANDAY ISHLAYDI"
+
+#: apps/home/templates/about.html:57
+msgid "Complete Customer Ideas"
+msgstr "To'liq mijozlar g'oyalari"
+
+#: apps/home/templates/about.html:58 apps/home/templates/about.html:112
+#: apps/home/templates/about.html:208 apps/home/templates/about.html:289
+msgid ""
+"The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis "
+"autem vel eum iriure dolor in hendrerit"
+msgstr ""
+"Aniqlash uchun past osilgan mevalarda choy pishirishdan zavqlanishning "
+"mukammal usuli. Lekin politsiya yoki uning ofisida og'riq"
+
+#: apps/home/templates/about.html:58 apps/home/templates/about.html:112
+#: apps/home/templates/about.html:208 apps/home/templates/about.html:289
+msgid ""
+"in vulputate velit esse molestie consequat, vel illum dolore eu feugiat "
+"nulla facilisis."
+msgstr ""
+"vulputatda u molestie consequat bo'lishni xohlaydi, yoki bu og'riq eu "
+"feugiat no facilisis."
+
+#: apps/home/templates/about.html:68
+msgid "Admin Verify Details"
+msgstr "Admin Tafsilotlarni tekshirish"
+
+#: apps/home/templates/about.html:69 apps/home/templates/about.html:81
+#: apps/home/templates/about.html:93
+msgid ""
+"Sed ut perspiciatis unde omnis iste natus error sit accusantium doloremque "
+"laudantium totam rem aperiam, eaqueipsa quae veritatis."
+msgstr ""
+"Ammo og'riqni ayblayotgan va maqtaganlarning bunchalik tug'ma xatosi "
+"qayerdan kelib chiqqanligini ko'rishingiz uchun men hamma narsani haqiqat "
+"kabi ochaman."
+
+#: apps/home/templates/about.html:80
+msgid "Send The Solution"
+msgstr "Yechimni yuboring"
+
+#: apps/home/templates/about.html:92
+msgid "Complete Profile"
+msgstr "To'liq profil"
+
+#: apps/home/templates/about.html:110
+msgid "TECHNOLOGY INDEX"
+msgstr "TEXNOLOGIYA INDEKSI"
+
+#: apps/home/templates/about.html:111
+msgid "Let’s Get Creative"
+msgstr "Ijodkorlikka erishaylik"
+
+#: apps/home/templates/about.html:134
+msgid "Active Clients"
+msgstr "Faol mijozlar"
+
+#: apps/home/templates/about.html:135 apps/home/templates/about.html:150
+#: apps/home/templates/about.html:174 apps/home/templates/about.html:189
+msgid ""
+"Sed ut perspiciatis unde omnis iste natus sit accusantium doloremque "
+"laudantium totam."
+msgstr ""
+"Lekin bularning hammasi butun ayblovchilardan va maqtovchilarning azobidan "
+"tug'ilganini ko'rishingiz uchun."
+
+#: apps/home/templates/about.html:149
+msgid "Projects Done"
+msgstr "Bajarilgan loyihalar"
+
+#: apps/home/templates/about.html:173
+msgid "Team Advisors"
+msgstr "Jamoa maslahatchilari"
+
+#: apps/home/templates/about.html:188
+msgid "Users Online"
+msgstr "Foydalanuvchilar onlayn"
+
+#: apps/home/templates/about.html:206
+msgid "THE TEAM"
+msgstr "JAMOA"
+
+#: apps/home/templates/about.html:207
+msgid "Meet Our Team"
+msgstr "Jamoamiz bilan tanishing"
+
+#: apps/home/templates/about.html:287
+msgid "LOCATION STORE"
+msgstr "JOYLASHTIRISH DO‘KON"
+
+#: apps/home/templates/about.html:288
+msgid "Where We Are"
+msgstr "Biz qayerdamiz?"
+
+#: apps/home/templates/about.html:305 apps/home/templates/about.html:334
+#: apps/home/templates/about.html:392
+msgid "Find us"
+msgstr "Bizni toping"
+
+#: apps/home/templates/about.html:314 apps/home/templates/about.html:343
+#: apps/home/templates/about.html:372 apps/home/templates/about.html:401
+msgid "Call us"
+msgstr "Bizga qo'ng'iroq qiling"
+
+#: apps/home/templates/faq.html:57
+msgid "Home"
+msgstr "Bosh sahifa"
+
+#: apps/home/templates/faq.html:80
+msgid "Order and Returns"
+msgstr "Buyurtma va qaytarish"
+
+#: apps/home/templates/faq.html:87
+msgid "Can I order over the phone?"
+msgstr "Telefon orqali buyurtma bera olamanmi?"
+
+#: apps/home/templates/faq.html:92 apps/home/templates/faq.html:116
+#: apps/home/templates/faq.html:139 apps/home/templates/faq.html:163
+msgid ""
+"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut "
+"aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in "
+"voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+msgstr ""
+"Chunonchi, eng mayda tafsilotiga kelsak, hech kim biron bir ish bilan "
+"shug'ullanmasligi kerak, agar u o'ziga foyda keltirmasa. Naslchilik yo'q "
+"degan umidda darddan tuk bo'lishni istaydi rohatda tanbehda darddan "
+"g'azablanma."
+
+#: apps/home/templates/faq.html:99
+msgid "Donec mattis finibus elit ut tristique?"
+msgstr "Mulkning oxirigacha, qanday achinarli?"
+
+#: apps/home/templates/faq.html:104 apps/home/templates/faq.html:151
+msgid ""
+"The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis "
+"autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie "
+"consequat, vel illum dolore eu feugiat nulla facilisis. For me, the most "
+"important part of improving at photography has been sharing it."
+msgstr ""
+"Aniqlash uchun past osilgan mevalarda choy pishirishdan zavqlanishning "
+"mukammal usuli. Ammo duis yoki uning iriure og'rig'i vulputatdagi "
+"hendreritda molestie consequat bo'lishni xohlaydi, yoki bu og'riq eu feugiat"
+" no facilisis. Men uchun fotografiyani yaxshilashning eng muhim qismi uni "
+"baham ko'rish edi."
+
+#: apps/home/templates/faq.html:111
+msgid "Vestibulum a lorem placerat, porttitor urna vel?"
+msgstr "Internet sarmoyasiga yoki aviakompaniyaga sarmoya kiritasizmi?"
+
+#: apps/home/templates/faq.html:127
+msgid "Ordering from AYO"
+msgstr "AYO dan buyurtma"
+
+#: apps/home/templates/faq.html:134
+msgid "What is the rules of Payment?"
+msgstr "To'lov qoidalari qanday?"
+
+#: apps/home/templates/faq.html:146
+msgid "How much i need to pay?"
+msgstr "Men qancha to'lashim kerak?"
+
+#: apps/home/templates/faq.html:158
+msgid "Nam pellentesque aliquam metus?"
+msgstr "Bolalar uchun qandaydir qo'rquv bormi?"
+
+#: apps/home/templates/home.html:22 apps/home/templates/home.html:34
+#: apps/home/templates/home.html:46
+#| msgid "WEEK DEALS"
+msgid "HOT DEALS"
+msgstr "Issiq Kelishuv"
 
 #: apps/home/templates/home.html:49
 msgid "WEEK DEALS"
-msgstr "Hafta tartibi"
+msgstr "Haftalik kelishuv"
 
-#: apps/home/views.py:25
-msgid "Hello"
-msgstr "Salom"
+#: apps/home/templates/home.html:71
+msgid "New Style"
+msgstr "Yangi style"
+
+#: apps/home/templates/home.html:72 apps/home/templates/home.html:83
+msgid "Free Shipping 20km"
+msgstr "20 kmga bepul"

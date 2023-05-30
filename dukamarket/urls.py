@@ -12,25 +12,28 @@ from home import views
 
 urlpatterns = [
     path('selectlanguage', views.selectlanguage, name='selectlanguage'),
+    path('selectlanguager', views.selectlanguager, name='selectlanguager'),
+    path('selectlanguaged', views.selectlanguaged, name='selectlanguaged'),
     path('selectcurrency', views.selectcurrency, name='selectcurrency'),
-    path('savelangcur', views.savelangcur, name='savelangcur'),
+    path('savecur', views.savecur, name='savelangcur'),
     path('i18n/', include(django.conf.urls.i18n)),
+    path('rosetta/', include('rosetta.urls')),
+
 ]  
 
 urlpatterns += i18n_patterns(
-    path('', include('home.urls')),
-
     path('users/', include('users.urls')),
 
     path(_('blog/'), include('blog.urls')),
 
     path('shopping/', include('shopping.urls')),
     path('products/', include('products.urls')),
-    path('currencies/', include('currencies.urls')),
-    path(_('admin/'), admin.site.urls),
     
     path('api/', include('api.urls')),
-    # path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('currencies/', include('currencies.urls')),
+    path(_('admin/'), admin.site.urls),
+    path('', include('home.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,5 +1,7 @@
 {
     "python.analysis.extraPaths": [
         "./apps"
-    ]
+    ],
+    "search.useGlobalIgnoreFiles": false,
+    "search.useParentIgnoreFiles": false
 }

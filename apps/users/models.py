@@ -1,8 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import User
 import uuid
+
+from django.urls import reverse
+from shopping.models import Categories, Product
+from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
 from currencies.models import Currency
+
+
+
+
 
 class Profile(models.Model):
     user = models.OneToOneField(
@@ -14,6 +22,7 @@ class Profile(models.Model):
     username = models.CharField(max_length=200, blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
     currency = models.ForeignKey(Currency, on_delete=models.CASCADE, null=True, blank=True)
+    
     
     def __str__(self):
         return str(self.username)
@@ -33,3 +42,4 @@ class Message(models.Model):
 
     def __str__(self):
         return self.subject
+

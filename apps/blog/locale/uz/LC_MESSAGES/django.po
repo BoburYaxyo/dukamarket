@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-28 23:01+0500\n"
+"POT-Creation-Date: 2023-05-29 20:06+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,59 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps/blog/templates/blog.html:29
+msgid "Home"
+msgstr ""
+
+#: apps/blog/templates/blog.html:32
+msgid "Blog"
+msgstr ""
+
+#: apps/blog/templates/blog.html:58 apps/blog/templates/blog.html:83
+#: apps/blog/templates/blog.html:108 apps/blog/templates/blog.html:133
+msgid "Food Beverage"
+msgstr ""
+
 #: apps/blog/templates/blog.html:62
+msgid ""
+"Delicious Mixed Grilled Food For The Weekend With The Family And Friends"
+msgstr ""
+
+#: apps/blog/templates/blog.html:63 apps/blog/templates/blog.html:88
+#: apps/blog/templates/blog.html:113 apps/blog/templates/blog.html:138
 msgid "posted by"
 msgstr "post qigan"
+
+#: apps/blog/templates/blog.html:63
+msgid "Adlop"
+msgstr ""
+
+#: apps/blog/templates/blog.html:64 apps/blog/templates/blog.html:89
+#: apps/blog/templates/blog.html:114 apps/blog/templates/blog.html:139
+msgid ""
+"It is accompanied by a case that can contain up to three different diffusers "
+"and can be used for dry storage of loose tea. The perfect way to enjoy "
+"brewing tea on fruit to..."
+msgstr ""
+
+#: apps/blog/templates/blog.html:67 apps/blog/templates/blog.html:92
+#: apps/blog/templates/blog.html:117 apps/blog/templates/blog.html:142
+msgid "Read More"
+msgstr ""
+
+#: apps/blog/templates/blog.html:87
+msgid "Delicious Grilled Pork For These Family Reunions By The Charcoal Stove"
+msgstr ""
+
+#: apps/blog/templates/blog.html:112
+msgid "Delicious Seasoned Lobster Suitable For Family Summer Holidays"
+msgstr ""
+
+#: apps/blog/templates/blog.html:137
+msgid "Grilled Seafood With Delicious and Vegetables and Fruits With Friends"
+msgstr ""
+
+#: apps/blog/templates/blog.html:158
+msgid "Digital"
+msgstr ""

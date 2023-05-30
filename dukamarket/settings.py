@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'rest_framework',
     'currencies',
+    'rosetta',
 ]
 
 MIDDLEWARE = [
@@ -149,8 +150,13 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
-
+CKEDITOR_CONFIGS = {
+'default': {
+    'toolbar':'Full',
+},
+}
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 

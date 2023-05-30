@@ -1,5 +1,5 @@
 {% extends 'main.html' %}
-
+{% load i18n %}
 {% block content %}
 <body>
       <!--[if lte IE 9]>
@@ -12,8 +12,8 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="page-banner-content text-center">
-                            <h3>About Us</h3>
-                            <p>A wonderful serenity has taken possession of my entire soul, like these <br> sweet mornings of spring which I enjoy with my whole heart.</p>
+                            <h3>{% trans "About Us" %}</h3>
+                            <p>{% trans "A wonderful serenity has taken possession of my entire soul, like these" %} <br> {% trans "sweet mornings of spring which I enjoy with my whole heart." %}</p>
                             <div class="page-bottom-btn mt-55">
                                 <a href="{% url 'shop' %}" class="st-btn-4">Discover now</a>
                             </div>
@@ -30,11 +30,11 @@
                 <div class="row align-items-center">
                    <div class="col-xl-6 col-lg-6">
                        <div class="about-content">
-                           <span>ABOUT OUR ONLINE STORE</span>
-                           <h4>Hello,</h4>
-                           <h5 class="banner-t mb-30">With 25+ Years Of Experience</h5>
-                           <p class="about-text">Over 25 years Dukamarket helping companies reach their <br> financial and branding goals.</p>
-                           <p>The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. For me, the most important part of improving at photography.</p>
+                           <span>{% trans "ABOUT OUR ONLINE STORE" %}</span>
+                           <h4>{% trans "Hello" %},</h4>
+                           <h5 class="banner-t mb-30">{% trans "With 25+ Years Of Experience" %}</h5>
+                           <p class="about-text">{% trans "Over 25 years Dukamarket helping companies reach their" %} <br> {% trans "financial and branding goals." %}</p>
+                           <p>{% trans "The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. For me, the most important part of improving at photography." %}</p>
                        </div>
                    </div>
                    <div class="col-xl-6 col-lg-6">
@@ -53,9 +53,9 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="abs-section-title text-center">
-                            <span>HOW IT WORKS</span>
-                            <h4>Complete Customer Ideas</h4>
-                            <p>The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit <br> in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p>
+                            <span>{% trans "HOW IT WORKS" %}</span>
+                            <h4>{% trans "Complete Customer Ideas" %}</h4>
+                            <p>{% trans "The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit" %} <br> {% trans "in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis." %}</p>
                         </div>
                     </div>
                 </div>
@@ -65,8 +65,8 @@
                             <div class="services-icon mb-25">
                                 <i class="fal fa-share-square"></i>
                             </div>
-                            <h6>Admin Verify Details</h6>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit accusantium doloremque laudantium totam rem aperiam, eaqueipsa quae veritatis.</p>
+                            <h6>{% trans "Admin Verify Details" %}</h6>
+                            <p>{% trans "Sed ut perspiciatis unde omnis iste natus error sit accusantium doloremque laudantium totam rem aperiam, eaqueipsa quae veritatis." %}</p>
                             <div class="s-count-number">
                                 <span>01</span>
                             </div>
@@ -77,8 +77,8 @@
                             <div class="services-icon mb-25">
                                 <i class="fal fa-file"></i>
                             </div>
-                            <h6>Send The Solution</h6>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit accusantium doloremque laudantium totam rem aperiam, eaqueipsa quae veritatis.</p>
+                            <h6>{% trans "Send The Solution" %}</h6>
+                            <p>{% trans "Sed ut perspiciatis unde omnis iste natus error sit accusantium doloremque laudantium totam rem aperiam, eaqueipsa quae veritatis." %}</p>
                             <div class="s-count-number">
                                 <span>02</span>
                             </div>
@@ -89,8 +89,8 @@
                             <div class="services-icon mb-25">
                                 <i class="fal fa-thumbs-up"></i>
                             </div>
-                            <h6>Complete Profile</h6>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit accusantium doloremque laudantium totam rem aperiam, eaqueipsa quae veritatis.</p>
+                            <h6>{% trans "Complete Profile" %}</h6>
+                            <p>{% trans "Sed ut perspiciatis unde omnis iste natus error sit accusantium doloremque laudantium totam rem aperiam, eaqueipsa quae veritatis." %}</p>
                             <div class="s-count-number">
                                 <span>03</span>
                             </div>
@@ -107,9 +107,9 @@
                 <div class="row mb-15">
                     <div class="col-xl-12">
                         <div class="abs-section-title text-center">
-                            <span>TECHNOLOGY INDEX</span>
-                            <h4>Let’s Get Creative</h4>
-                            <p>The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit <br> in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p>
+                            <span>{% trans "TECHNOLOGY INDEX" %}</span>
+                            <h4>{% trans "Let’s Get Creative" %}</h4>
+                            <p>{% trans "The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit" %} <br> {% trans "in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis." %}i</p>
                         </div>
                     </div>
                 </div>
@@ -131,8 +131,8 @@
                                                <p>+</p>
                                            </div>
                                         </div>
-                                        <h5>Active Clients</h5>
-                                        <p>Sed ut perspiciatis unde omnis iste natus sit accusantium doloremque laudantium totam.</p>
+                                        <h5>{% trans "Active Clients" %}</h5>
+                                        <p>{% trans "Sed ut perspiciatis unde omnis iste natus sit accusantium doloremque laudantium totam." %}</p>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
@@ -146,8 +146,8 @@
                                                <p>+</p>
                                            </div>
                                         </div>
-                                        <h5>Projects Done</h5>
-                                        <p>Sed ut perspiciatis unde omnis iste natus sit accusantium doloremque laudantium totam.</p>
+                                        <h5>{% trans "Projects Done" %}</h5>
+                                        <p>{% trans "Sed ut perspiciatis unde omnis iste natus sit accusantium doloremque laudantium totam." %}</p>
                                     </div>
                                 </div>
                             </div>
@@ -170,8 +170,8 @@
                                                <p>+</p>
                                            </div>
                                         </div>
-                                        <h5>Team Advisors</h5>
-                                        <p>Sed ut perspiciatis unde omnis iste natus sit accusantium doloremque laudantium totam.</p>
+                                        <h5>{% trans "Team Advisors" %}</h5>
+                                        <p>{% trans "Sed ut perspiciatis unde omnis iste natus sit accusantium doloremque laudantium totam." %}</p>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
@@ -185,8 +185,8 @@
                                                <p>k</p>
                                            </div>
                                         </div>
-                                        <h5>Users Online</h5>
-                                        <p>Sed ut perspiciatis unde omnis iste natus sit accusantium doloremque laudantium totam.</p>
+                                        <h5>{% trans "Users Online" %}</h5>
+                                        <p>{% trans "Sed ut perspiciatis unde omnis iste natus sit accusantium doloremque laudantium totam." %}</p>
                                     </div>
                                 </div>
                             </div>
@@ -203,9 +203,9 @@
                 <div class="row mb-35">
                     <div class="col-xl-12">
                         <div class="abs-section-title text-center">
-                            <span>THE TEAM</span>
-                            <h4>Meet Our Team</h4>
-                            <p>The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit <br> in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p>
+                            <span>{% trans "THE TEAM" %}</span>
+                            <h4>{% trans "Meet Our Team" %}</h4>
+                            <p>{% trans "The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit" %} <br> {% trans "in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis." %}</p>
                         </div>
                     </div>
                 </div>
@@ -284,9 +284,9 @@
                 <div class="row mb-25">
                     <div class="col-xl-12">
                         <div class="abs-section-title text-center">
-                            <span>LOCATION STORE</span>
-                            <h4>Where We Are</h4>
-                            <p>The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit <br> in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p>
+                            <span>{% trans "LOCATION STORE" %}</span>
+                            <h4>{% trans "Where We Are" %}</h4>
+                            <p>{% trans "The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit" %} <br> {% trans "in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis." %}</p>
                         </div>
                     </div>
                 </div>
@@ -302,7 +302,7 @@
                                     <i class="fal fa-map-marker-alt"></i>
                                 </div>
                                 <div class="sm-content">
-                                    <span>Find us</span>
+                                    <span>{% trans "Find us" %}</span>
                                     <p>Rue Saint-Antoine, Paris, France  </p>  
                                 </div>
                             </div>
@@ -311,7 +311,7 @@
                                     <i class="fal fa-phone-alt"></i>
                                 </div>
                                 <div class="sm-content">
-                                    <span>Call us</span>
+                                    <span>{% trans "Call us" %}</span>
                                     <p><a href="tel:+8804568">(+100) 123 456 7890</a></p>  
                                 </div>
                             </div>
@@ -331,7 +331,7 @@
                                     <i class="fal fa-map-marker-alt"></i>
                                 </div>
                                 <div class="sm-content">
-                                    <span>Find us</span>
+                                    <span>{% trans "Find us" %}</span>
                                     <p>Brick Ln, Spitalfields, London E1, UK</p>  
                                 </div>
                             </div>
@@ -340,7 +340,7 @@
                                     <i class="fal fa-phone-alt"></i>
                                 </div>
                                 <div class="sm-content">
-                                    <span>Call us</span>
+                                    <span>{% trans "Call us" %}</span>
                                     <p><a href="tel:+8804568">(+100) 123 456 7890</a></p>  
                                 </div>
                             </div>
@@ -369,7 +369,7 @@
                                     <i class="fal fa-phone-alt"></i>
                                 </div>
                                 <div class="sm-content">
-                                    <span>Call us</span>
+                                    <span>{% trans "Call us" %}</span>
                                     <p><a href="tel:+8804568">(+100) 123 456 7890</a></p>  
                                 </div>
                             </div>
@@ -389,7 +389,7 @@
                                     <i class="fal fa-map-marker-alt"></i>
                                 </div>
                                 <div class="sm-content">
-                                    <span>Find us</span>
+                                    <span>{% trans "Find us" %}</span>
                                     <p>Calle del Correo, 4, Madrid, Spain</p>  
                                 </div>
                             </div>
@@ -398,7 +398,7 @@
                                     <i class="fal fa-phone-alt"></i>
                                 </div>
                                 <div class="sm-content">
-                                    <span>Call us</span>
+                                    <span>{% trans "Call us" %}</span>
                                     <p><a href="tel:+8804568">(+100) 123 456 7890</a></p>  
                                 </div>
                             </div>

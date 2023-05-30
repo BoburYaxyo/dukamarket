@@ -19,7 +19,7 @@
                                 <div class="single-slider swiper-slide b-radius-2 slider-height-3 d-flex align-items-center" data-background="/static/assets/img/slider/03-slide-1.jpg">
                                     <div class="slider-content slider-content-2">
                                         <div class="slider-top-btn mb-20" data-animation="fadeInLeft" data-delay="1.5s" style="animation-delay: 1.5s;">
-                                            <a href="{% url 'shop' %}" class="st-btn b-radius">HOT DEALS</a>
+                                            <a href="{% url 'shop' %}" class="st-btn b-radius">{% trans "HOT DEALS" %}</a>
                                         </div>
                                         <h2 data-animation="fadeInLeft" data-delay="1.7s" class="pt-15 slider-title pb-5">BIG SALE <br> TOP HEADPHONE</h2>
                                         <p class="pr-20 slider_text" data-animation="fadeInLeft" data-delay="1.9s">Best Sport Edition 2022</p>
@@ -31,7 +31,7 @@
                                 <div class="single-slider swiper-slide b-radius-2 slider-height-3 d-flex align-items-center" data-background="/static/assets/img/slider/03-slide-2.jpg">
                                     <div class="slider-content slider-content-2">
                                         <div class="slider-top-btn mb-20" data-animation="fadeInLeft" data-delay="1.5s" style="animation-delay: 1.5s;">
-                                            <a href="{% url 'shop' %}" class="st-btn b-radius">HOT DEALS</a>
+                                            <a href="{% url 'shop' %}" class="st-btn b-radius">{% trans "HOT DEALS" %}</a>
                                         </div>
                                         <h2 data-animation="fadeInLeft" data-delay="1.5s" class="pt-15 slider-title pb-5">GEAR 360<br> WiRELESS LARBUDS</h2>
                                         <p class="pr-20 slider_text" data-animation="fadeInLeft" data-delay="1.7s">Top Quality Earbuds & Accessories</p>
@@ -43,7 +43,7 @@
                                 <div class="single-slider b-radius-2 swiper-slide slider-height-3 d-flex align-items-center" data-background="/static/assets/img/slider/03-slide-3.jpg">
                                     <div class="slider-content slider-content-2">
                                         <div class="slider-top-btn mb-20" data-animation="fadeInLeft" data-delay="1.5s" style="animation-delay: 1.5s;">
-                                            <a href="{% url 'shop' %}" class="st-btn b-radius">HOT DEALS</a>
+                                            <a href="{% url 'shop' %}" class="st-btn b-radius">{% trans "HOT DEALS" %}</a>
                                         </div>
                                         <h2 data-animation="fadeInLeft" data-delay="1.5s" class="pt-15 slider-title pb-5">LIMITED<br> 
                                        {% trans "WEEK DEALS" %}</h2>
@@ -68,8 +68,8 @@
                                                 <a href="{% url 'product-details' %}"><img src="/static/assets/img/banner/banner-17.jpg" alt=""></a>
                                             </div>
                                             <div class="banner__content">
-                                                <h6><a href="{% url 'product-details' %}">New Style <br> Bluetooh Speaker</a></h6>
-                                                <p class="banner-p mt-30">Free Shipping 20km</p>
+                                                <h6><a href="{% url 'product-details' %}"> {% trans "New Style" %} <br> Bluetooh Speaker</a></h6>
+                                                <p class="banner-p mt-30">{% trans "Free Shipping 20km" %}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -80,7 +80,7 @@
                                             </div>
                                             <div class="banner__content">
                                                 <h6><a href="{% url 'product-details' %}">Limited <br> Top Camera</a></h6>
-                                                <p class="banner-p mt-30">Free Shipping 20km</p>
+                                                <p class="banner-p mt-30">{% trans "Free Shipping 20km" %}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -1141,108 +1141,37 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
+                    {% for blog in blogs %}
                     <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-4">
                         <div class="single-smblog mb-30">
                             <div class="smblog-thum">
                                 <div class="blog-image blog-image-2 w-img">
-                                    <a href="{% url 'blog-details' %}"><img src="/static/assets/img/blog/sm-b-1.jpg" alt=""></a>
+                                    <a href="{% url 'blog-details' blog.id %}"><img style="max-height: 202px; min-height: 201.9px;" src="{{blog.imageURL}}" alt=""></a>
                                 </div>
                                 <div class="blog-tag">
-                                    <a href="{% url 'blog' %}">Digital</a>
+                                    <a href="{% url 'blog-details' blog.id %}">Digital</a>
                                 </div>
                             </div>
                             <div class="smblog-content smblog-content-2">
-                                <h6><a href="{% url 'blog-details' %}">How mobile phones have changed people’s lives in the world</a></h6>
+                                <h6><a href="{% url 'blog-details' blog.id %}">How mobile phones have changed people’s lives in the world</a></h6>
                                 <span class="author mb-10">posted by <a href="#">Adlop</a></span>
                                 <div class="smblog-foot pt-15">
                                     <div class="post-readmore">
-                                        <a href="{% url 'blog-details' %}"> Read More <span class="icon"></span></a>
+                                        <a href="{% url 'blog-details' blog.id %}"> Read More <span class="icon"></span></a>
                                     </div>
                                     <div class="post-date">
-                                        <a href="{% url 'blog-details' %}">Jan 24, 2022</a>
+                                        <a href="{% url 'blog-details' blog.id %}">Jan 24, 2022</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-4">
-                        <div class="single-smblog mb-30">
-                            <div class="smblog-thum">
-                                <div class="blog-image blog-image-2 w-img">
-                                    <a href="{% url 'blog-details' %}"><img src="/static/assets/img/blog/sm-b-2.jpg" alt=""></a>
-                                </div>
-                                <div class="blog-tag">
-                                    <a href="blog.html">New</a>
-                                </div>
-                            </div>
-                            <div class="smblog-content smblog-content-2">
-                                <h6><a href="{% url 'blog-details' %}">Top 5 Best Digital Cameras for 2021 You Should Buy</a></h6>
-                                <span class="author mb-10">posted by <a href="#">Angelia</a></span>
-                                <div class="smblog-foot pt-15">
-                                    <div class="post-readmore">
-                                        <a href="{% url 'blog-details' %}">Read More <span class="icon"></span></a>
-                                    </div>
-                                    <div class="post-date">
-                                        <a href="{% url 'blog-details' %}">Jan 24, 2022</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-4">
-                        <div class="single-smblog mb-30">
-                            <div class="smblog-thum">
-                                <div class="blog-image blog-image-2 w-img">
-                                    <a href="{% url 'blog-details' %}"><img src="/static/assets/img/blog/sm-b-3.jpg" alt=""></a>
-                                </div>
-                                <div class="blog-tag">
-                                    <a href="{% url 'blog' %}">Update</a>
-                                </div>
-                            </div>
-                            <div class="smblog-content smblog-content-2">
-                                <h6><a href="{% url 'blog-details' %}">Capture the moment with 4 cameras on Oppo A92</a></h6>
-                                <span class="author mb-10">posted by <a href="#">Iqbal</a></span>
-                                <div class="smblog-foot pt-15">
-                                    <div class="post-readmore">
-                                        <a href="{% url 'blog-details' %}"> Read More <span class="icon"></span></a>
-                                    </div>
-                                    <div class="post-date">
-                                        <a href="{% url 'blog-details' %}">Jan 24, 2022</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-4">
-                        <div class="single-smblog mb-30">
-                            <div class="smblog-thum">
-                                <div class="blog-image blog-image-2 w-img">
-                                    <a href="{% url 'blog-details' %}"><img src="/static/assets/img/blog/sm-b-4.jpg" alt=""></a>
-                                </div>
-                                <div class="blog-tag">
-                                    <a href="{% url 'blog' %}">Offer</a>
-                                </div>
-                            </div>
-                            <div class="smblog-content smblog-content-2">
-                                <h6><a href="{% url 'blog-details' %}">Use Headphones Properly Not To Damage Your Hearing</a></h6>
-                                <span class="author mb-10">posted by <a href="#">Jenny</a></span>
-                                <div class="smblog-foot pt-15">
-                                    <div class="post-readmore">
-                                        <a href="{% url 'blog-details' %}"> Read More <span class="icon"></span></a>
-                                    </div>
-                                    <div class="post-date">
-                                        <a href="{% url 'blog-details' %}">Jan 24, 2022</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
-        <!-- blog-area-end -->
-
         <!-- brand-area-start -->
         <section class="brand-area brand-area-d">
             <div class="container">
