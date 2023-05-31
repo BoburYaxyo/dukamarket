@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-29 20:06+0500\n"
-"PO-Revision-Date: 2023-05-30 10:21+0000\n"
+"POT-Creation-Date: 2023-05-31 15:29+0500\n"
+"PO-Revision-Date: 2023-05-31 10:31+0000\n"
 "Last-Translator: bobur  <byaxyoxojayev@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -36,7 +36,7 @@ msgstr "butun qalbim bilan zavqlanadigan bahorning shirin tonglari."
 msgid "ABOUT OUR ONLINE STORE"
 msgstr "ONLAYN MAGAZINIMIZ HAQIDA"
 
-#: apps/home/templates/about.html:34 apps/home/views.py:25
+#: apps/home/templates/about.html:34 apps/home/views.py:29
 msgid "Hello"
 msgstr "Salom"
 
@@ -76,6 +76,7 @@ msgstr "To'liq mijozlar g'oyalari"
 
 #: apps/home/templates/about.html:58 apps/home/templates/about.html:112
 #: apps/home/templates/about.html:208 apps/home/templates/about.html:289
+#: apps/home/templates/contact.html:48
 msgid ""
 "The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis "
 "autem vel eum iriure dolor in hendrerit"
@@ -85,6 +86,7 @@ msgstr ""
 
 #: apps/home/templates/about.html:58 apps/home/templates/about.html:112
 #: apps/home/templates/about.html:208 apps/home/templates/about.html:289
+#: apps/home/templates/contact.html:48
 msgid ""
 "in vulputate velit esse molestie consequat, vel illum dolore eu feugiat "
 "nulla facilisis."
@@ -155,25 +157,33 @@ msgstr "JAMOA"
 msgid "Meet Our Team"
 msgstr "Jamoamiz bilan tanishing"
 
-#: apps/home/templates/about.html:287
+#: apps/home/templates/about.html:287 apps/home/templates/contact.html:46
 msgid "LOCATION STORE"
 msgstr "JOYLASHTIRISH DO‘KON"
 
-#: apps/home/templates/about.html:288
+#: apps/home/templates/about.html:288 apps/home/templates/contact.html:47
 msgid "Where We Are"
 msgstr "Biz qayerdamiz?"
 
 #: apps/home/templates/about.html:305 apps/home/templates/about.html:334
-#: apps/home/templates/about.html:392
+#: apps/home/templates/about.html:392 apps/home/templates/contact.html:64
+#: apps/home/templates/contact.html:91 apps/home/templates/contact.html:118
+#: apps/home/templates/contact.html:143
 msgid "Find us"
 msgstr "Bizni toping"
 
 #: apps/home/templates/about.html:314 apps/home/templates/about.html:343
 #: apps/home/templates/about.html:372 apps/home/templates/about.html:401
+#: apps/home/templates/contact.html:73 apps/home/templates/contact.html:100
+#: apps/home/templates/contact.html:125 apps/home/templates/contact.html:152
 msgid "Call us"
 msgstr "Bizga qo'ng'iroq qiling"
 
-#: apps/home/templates/faq.html:57
+#: apps/home/templates/contact.html:18 apps/home/templates/contact.html:27
+msgid "Contact Us"
+msgstr "Biz bilan bog'lanish"
+
+#: apps/home/templates/contact.html:24 apps/home/templates/faq.html:57
 msgid "Home"
 msgstr "Bosh sahifa"
 
@@ -236,7 +246,6 @@ msgstr "Bolalar uchun qandaydir qo'rquv bormi?"
 
 #: apps/home/templates/home.html:22 apps/home/templates/home.html:34
 #: apps/home/templates/home.html:46
-#| msgid "WEEK DEALS"
 msgid "HOT DEALS"
 msgstr "Issiq Kelishuv"
 

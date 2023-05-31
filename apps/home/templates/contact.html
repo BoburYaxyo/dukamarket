@@ -1,5 +1,5 @@
 {% extends 'main.html' %}
-
+{% load i18n %}
 
 
 {% block content %}
@@ -15,16 +15,16 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="page-banner-content text-center">
-                            <h4 class="breadcrumb-title">Contact Us</h4>
+                            <h4 class="breadcrumb-title">{% trans "Contact Us" %}</h4>
                             <div class="breadcrumb-two">
                                 <nav>
                                    <nav class="breadcrumb-trail breadcrumbs">
                                       <ul class="breadcrumb-menu">
                                          <li class="breadcrumb-trail">
-                                            <a href="/"><span>Home</span></a>
+                                            <a href="/"><span>{% trans "Home" %}</span></a>
                                          </li>
                                          <li class="trail-item">
-                                            <span>Contact Us</span>
+                                            <span>{% trans "Contact Us" %}</span>
                                          </li>
                                       </ul>
                                    </nav> 
@@ -43,9 +43,9 @@
                 <div class="row mb-25">
                     <div class="col-xl-12">
                         <div class="abs-section-title text-center">
-                            <span>LOCATION STORE</span>
-                            <h4>Where We Are</h4>
-                            <p>The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit <br> in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p>
+                            <span>{% trans "LOCATION STORE" %}</span>
+                            <h4>{% trans "Where We Are" %}</h4>
+                            <p>{% trans "The perfect way to enjoy brewing tea on low hanging fruit to identify. Duis autem vel eum iriure dolor in hendrerit" %} <br> {% trans "in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis." %}</p>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                                     <i class="fal fa-map-marker-alt"></i>
                                 </div>
                                 <div class="sm-content">
-                                    <span>Find us</span>
+                                    <span>{% trans "Find us" %}</span>
                                     <p>Rue Saint-Antoine, Paris, France  </p>  
                                 </div>
                             </div>
@@ -70,7 +70,7 @@
                                     <i class="fal fa-phone-alt"></i>
                                 </div>
                                 <div class="sm-content">
-                                    <span>Call us</span>
+                                    <span>{% trans "Call us" %}</span>
                                     <p><a href="tel:+8804568">(+100) 123 456 7890</a></p>  
                                 </div>
                             </div>
@@ -88,7 +88,7 @@
                                     <i class="fal fa-map-marker-alt"></i>
                                 </div>
                                 <div class="sm-content">
-                                    <span>Find us</span>
+                                    <span>{% trans "Find us" %}</span>
                                     <p>Brick Ln, Spitalfields, London E1, UK</p>  
                                 </div>
                             </div>
@@ -97,7 +97,7 @@
                                     <i class="fal fa-phone-alt"></i>
                                 </div>
                                 <div class="sm-content">
-                                    <span>Call us</span>
+                                    <span>{% trans "Call us" %}</span>
                                     <p><a href="tel:+8804568">(+100) 123 456 7890</a></p>  
                                 </div>
                             </div>
@@ -115,14 +115,14 @@
                                     <i class="fal fa-map-marker-alt"></i>
                                 </div>
                                 <div class="sm-content">
-                                    <span>Find us</span>
+                                    <span>{% trans "Find us" %}</span>
                                     <p>Atlantic, Brooklyn, New York, US</p>  
                                 </div>
                             </div>
                             <div class="sm-item-loc sm-item-border mb-20">
                                 
                                 <div class="sm-content">
-                                    <span>Call us</span>
+                                    <span>{% trans "Call us" %}</span>
                                     <p><a href="tel:+8804568">(+100) 123 456 7890</a></p>  
                                 </div>
                             </div>
@@ -140,7 +140,7 @@
                                     <i class="fal fa-map-marker-alt"></i>
                                 </div>
                                 <div class="sm-content">
-                                    <span>Find us</span>
+                                    <span>{% trans "Find us" %}</span>
                                     <p>Calle del Correo, 4, Madrid, Spain</p>  
                                 </div>
                             </div>
@@ -149,7 +149,7 @@
                                     <i class="fal fa-phone-alt"></i>
                                 </div>
                                 <div class="sm-content">
-                                    <span>Call us</span>
+                                    <span>{% trans "Call us" %}</span>
                                     <p><a href="tel:+8804568">(+100) 123 456 7890</a></p>  
                                 </div>
                             </div>

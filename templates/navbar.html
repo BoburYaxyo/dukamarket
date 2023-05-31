@@ -168,12 +168,7 @@
                             {% endif %}
                           
                             </div>
-                            <li class="dropdown default-dropdown">
-                                <form id="currency_switcher" method="POST" action="{% url 'savelangcur' %}">
-                                    {% csrf_token %}
-                                    <input type="submit" style="margin-right: 5px;" value="Save" />
-                                </form>
-                            </li>
+                        
                             <div class="header__lang border-right">
                                 <form id="currency_switcher" method="POST" action="{% url 'selectcurrency' %}">
                                     {% csrf_token %}
@@ -182,7 +177,6 @@
                                         <option value="{{ curr.code }}"
                                             {% ifequal curr.code request.session.currency %}selected="selected"{% endifequal %}>
                                             {{ curr.symbol }} {{ curr.name }}
-                                            
                                         </option>
                                         {% endfor %}
                                     </select>
