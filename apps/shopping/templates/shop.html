@@ -96,7 +96,7 @@
                             <div class="product__sm mt-20">
                                 <ul>
                                     {% for product in itemlar %}
-                                    {% if product.special_offers %}
+                              
                                     <li class="product__sm-item d-flex align-items-center">
                                         <div class="product__sm-thumb mr-20">
                                             <a href="{% url 'product' product.id %}">
@@ -112,7 +112,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                    {% endif %}
+
                                     {% endfor %}
                                 </ul>
                             </div>

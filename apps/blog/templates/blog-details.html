@@ -44,13 +44,12 @@
                   <div class="col-xl-8 col-lg-8">
                     <div class="news-detalis-content mb-50">
                         <ul class="blog-meta mb-20">
-                           <li><a href="{% url 'blog-details' blog.id %}"><i class="fal fa-eye"></i>100 Views</a></li>
-                           <li><a href="{% url 'blog-details' blog.id %}"><i class="fal fa-comments"></i> 30 Comments</a></li>
+                           <li><a href="{% url 'blog-details' blog.id %}"><i class="fal fa-comments"></i> {{blog.posts.count}} Comments</a></li>
                            <li><a href="{% url 'blog-details' blog.id %}"><i class="fal fa-calendar-alt"></i> 24th March 2021</a></li>
                         </ul>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explic abo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur mag ni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                        <p>{{blog.description}}</p>
                         <div class="news-thumb mt-40">
-                           <img src="/static/assets/img/blog/blog-thumb.jpg" alt="blog" class="img-fluid">
+                           <img src="{{blog.imageURL}}" alt="blog" class="img-fluid">
                         </div>
                         <h4 class="news-title mt-60">Do you know how to wear headphones properly?</h4>
                         <p class="mt-25 mb-50">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia. Lorem ipsum dolor sit amet, consect etur adipisicing elit, sed do eiusmod tempor incididunt ut labore</p>
@@ -69,9 +68,9 @@
                         <div class="news-info d-sm-flex align-items-center justify-content-between mt-50 mb-50">
                            <div class="news-tag">
                              <h6 class="tag-title mb-25">Releted Tags</h6>
-                              <a href="#"> Popular</a>
-                              <a href="#">Desgin</a>
-                              <a href="#">UX</a>
+                             {% for tag in blog.btag.all %}
+                              <a href="#"> {{tag.name}}</a>
+                              {% endfor %}
                            </div>
                            <div class="news-share">
                               <h6 class="tag-title mb-25">Social Share</h6>
@@ -158,7 +157,7 @@
                                 <div class="widget">
                                     <h6 class="sidebar-title"> Search Here</h6>
                                     <div class="n-sidebar-search">
-                                       <form action="." method="GET">
+                                       <form action="{% url 'blog' %}" method="GET">
                                        <input name="b" type="text" placeholder="Search your keyword...">
                                        <a><button type="submit"><i class="fal fa-search"></i></button></a>
                                    </form>

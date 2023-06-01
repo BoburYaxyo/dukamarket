@@ -40,6 +40,7 @@ def shop(request):
     sizes = Sizes.objects.all()
     tags = Tags.objects.all()
     q = request.GET.get('q') if request.GET.get('q') != None else ''
+    empty = []
     products = Product.objects.filter(
         Q(category__name__icontains=q) |
         Q(name__icontains=q) |

@@ -1,19 +1,12 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
-
-from django.contrib.auth.models import auth
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-
+from shopping.utils import cartview, wishview
 from .forms import CustomUserCreationForm
 from django.contrib.auth import login, authenticate, logout
-# Create your views here.
 from shopping.models import Categories
 from django.shortcuts import render
-from django.http import JsonResponse
-import json
-import datetime
 from .models import *
 
 
@@ -84,11 +77,21 @@ def register(request):
 @login_required(login_url='login')
 def checkout(request):
     category = Categories.objects.all()
-    context = {'category': category}
+    myctx = cartview(request)
+    qyctx = wishview(request)
+    context = {
+        **myctx,
+        **qyctx,
+        'category': category}
     return render(request, 'checkout.html', context)
 
 
 def errorim(request):
     category = Categories.objects.all()
-    context = {'category': category}
+    myctx = cartview(request)
+    qyctx = wishview(request)
+    context = {
+        **myctx,
+        **qyctx,
+        'category': category}
     return render(request, '404.html', context)

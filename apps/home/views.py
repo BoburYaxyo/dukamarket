@@ -23,13 +23,12 @@ def home(request):
     myctx = cartview(request)
     qyctx = wishview(request)
     
-        
-
     context = {
         **myctx,
         **qyctx,
         'hello': _('Hello'),
-        'product': product,
+        'product': product[0:5],
+        'dproduct': product[0:6],
         'category': category,
         'blogs': blogs
     }
@@ -40,14 +39,29 @@ def home(request):
 def about(request):
     page = 'about'
     category = Categories.objects.all()
-    context = {'category': category, 'page': page}
+    myctx = cartview(request)
+    qyctx = wishview(request)
+    
+    context = {
+        **myctx,
+        **qyctx,
+        'category': category,
+        'page': page
+        }
     return render(request, 'about.html', context)
 
 
 def faq(request):
     page = 'faq'
     category = Categories.objects.all()
-    context = {'category': category, 'page': page}
+    myctx = cartview(request)
+    qyctx = wishview(request)
+    context = {
+        **myctx,
+        **qyctx,
+        'category': category,
+        'page': page
+        }
     return render(request, 'faq.html', context)
 
 
@@ -55,7 +69,14 @@ def faq(request):
 def contact(request):
     page = 'contact'
     category = Categories.objects.all()
-    context = {'category': category, 'page': page}
+    myctx = cartview(request)
+    qyctx = wishview(request)
+    context = {
+        **myctx,
+        **qyctx,
+        'category': category,
+        'page': page
+        }
     return render(request, 'contact.html', context)
 
 

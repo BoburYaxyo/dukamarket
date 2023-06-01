@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from shopping.models import Categories
+from shopping.utils import cartview, wishview
 from .models import Category, Blog, Post
 from django.db.models import Q
 from blog.utils import paginateBlogs
@@ -16,7 +17,11 @@ def blog(request):
         Q(title__icontains=b)
     )
     custom_range, blogs = paginateBlogs(request, blogs, 2)
+    myctx = cartview(request)
+    qyctx = wishview(request)
     context = {
+        **myctx,
+        **qyctx,
         'category': category,
         'bcategory': bcategory,
         'blogs': blogs,
@@ -61,7 +66,11 @@ def blog_details(request, pk):
         Q(title__icontains=b)
     )
     category = Categories.objects.all()
+    myctx = cartview(request)
+    qyctx = wishview(request)
     context = {
+        **myctx,
+        **qyctx,
         'category': category,
         'blog': blog,
         'bcategory': bcategory,

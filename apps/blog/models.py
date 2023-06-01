@@ -29,7 +29,7 @@ class Blog(models.Model):
     popular_feed = models.BooleanField(default=False)
     btag = models.ManyToManyField(Tags)
     posted_by = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    content = RichTextUploadingField(blank=True)
+    discussion = models.CharField(max_length=250)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

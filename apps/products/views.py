@@ -34,12 +34,14 @@ def single_prooduct(request, pk):
                 )
             
             return redirect('product', pk=pk)
-    #     if form.is_valid():
-    #         form.save()
-    #     else:
-    #         messages.success(
-    #             request, 'An error has occurred during registration')
-    context = {'product': product, 'category': category}
+    myctx = cartview(request)
+    qyctx = wishview(request)
+    context = {
+        **myctx,
+        **qyctx,
+        'product': product,
+        'category': category
+        }
     return render(request, 'product-details.html', context)
 
 
