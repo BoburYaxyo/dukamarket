@@ -140,6 +140,7 @@
                    
     
                     {% for item in product %}
+                    {% if item.special_offers %}
                     <div class="col">
                         <div class="product__item product__item-2 b-radius-2 mb-20">
                             <div class="product__thumb fix">
@@ -167,7 +168,7 @@
                                 </div>
                             </div>
                             <div class="product__content product__content-3">
-                                <h6><a href="{% url 'product-details' %}">{{item.name}}</a></h6>
+                                <h6><a href="{% url 'product' item.id %}">{{item.name}}</a></h6>
                                 <div class="rating mb-5 mt-10">
                                     <ul>
                                         <li><a href="#"><i class="fal fa-star"></i></a></li>
@@ -176,17 +177,15 @@
                                         <li><a href="#"><i class="fal fa-star"></i></a></li>
                                         <li><a href="#"><i class="fal fa-star"></i></a></li>
                                     </ul>
-                                    <span>({{product.reviews.count}})</span>
+                                    <span>({{item.reviews.count}})</span>
                                 </div>
                                 <div class="price mb-20">
                                     <span>{{item.price|currency:request.session.currency}} {{request.session.currency}}</span>
                                 </div>   
                                  <div class="progress mb-5">
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 70%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-                                <div class="progress-rate">
-                                    <span>Sold:{{item.sold}}</span>
-                                </div>
+                               
                             </div>
                             <div class="product__add-cart text-center">
                                 <a href="{% url 'add-cart' item.id %}" class="cart-btn-3 product-modal-sidebar-open-btn d-flex align-items-center justify-content-center w-100">
@@ -195,6 +194,7 @@
                             </div>
                         </div>
                     </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -1288,7 +1288,7 @@
                                     </ul>
                                 </div>
                                 <div class="product__stock mb-20">
-                                    <span class="mr-10">Availability :</span>
+                                     <span class="mr-10">Availability :</span>
                                     <span>1795 in stock</span>
                                 </div>
                                 <div class="product__modal-form">

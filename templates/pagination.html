@@ -1,0 +1,43 @@
+{% if queryset.has_other_pages %}
+<div class="tp-pagination text-center">
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="basic-pagination pt-30 pb-30">
+        <nav>
+          <ul>
+            {% if queryset.has_previous %}
+            <li>
+              <a
+                href="?page={{queryset.previous_page_number}}"
+                data-page="{{queryset.previous_page_number}}"
+                >&#10094; <i class="fal fa-angle-double-left"></i
+              ></a>
+            </li>
+            {% endif %} 
+            {% for page in custom_range %} 
+            {% if page == queryset.number%}
+            <li>
+              <a href="?page={{page}}" class="active" data-page="{{page}}"
+                >{{page}}</a
+              >
+            </li>
+            {% else %}
+            <li>
+              <a href="?page={{page}}" data-page="{{page}}">{{page}}</a>
+            </li>
+            {% endif %} {% endfor %} {% if queryset.has_next %}
+            <li>
+              <a
+                href="?page={{queryset.next_page_number}}"
+                data-page="{{queryset.next_page_number}}"
+                ><i class="fal fa-angle-double-right"></i> &#10095;</a
+              >
+            </li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}

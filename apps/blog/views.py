@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from shopping.models import Categories
 from .models import Category, Blog, Post
 from django.db.models import Q
+from blog.utils import paginateBlogs
 # Create your views here.
 
 
@@ -14,10 +15,12 @@ def blog(request):
         Q(bcategory__name__icontains=b) |
         Q(title__icontains=b)
     )
+    custom_range, blogs = paginateBlogs(request, blogs, 2)
     context = {
         'category': category,
         'bcategory': bcategory,
-        'blogs': blogs
+        'blogs': blogs,
+        'custom_range': custom_range,
     }
     return render(request, 'blog.html', context)
 

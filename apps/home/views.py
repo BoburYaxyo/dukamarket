@@ -22,6 +22,8 @@ def home(request):
         request.session['currency'] = settings.DEFAULT_CURRENCY
     myctx = cartview(request)
     qyctx = wishview(request)
+    
+        
 
     context = {
         **myctx,

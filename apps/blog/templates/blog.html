@@ -76,36 +76,7 @@
                         </div>
                         {% endfor %}
                     </div>
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="basic-pagination text-center pt-30 pb-30">
-                                <nav>
-                                   <ul>
-                                      <li>
-                                         <a href="{% url 'blog' %}" class="active">1</a>
-                                      </li>
-                                      <li>
-                                         <a href="{% url 'blog' %}">2</a>
-                                      </li>
-                                      <li>
-                                         <a href="{% url 'blog' %}">3</a>
-                                      </li>
-                                     <li>
-                                        <a href="{% url 'blog' %}">5</a>
-                                     </li>
-                                     <li>
-                                        <a href="{% url 'blog' %}">6</a>
-                                     </li>
-                                      <li>
-                                         <a href="{% url 'shop' %}">
-                                            <i class="fal fa-angle-double-right"></i>
-                                         </a>
-                                      </li>
-                                   </ul>
-                                 </nav>
-                             </div>
-                        </div>
-                    </div>
+                    {% include 'pagination.html' with queryset=blogs custom_range=custom_range %}
                   </div>
                   <div class="col-xl-4 col-lg-5">
                      <div class="news-sidebar pl-10">

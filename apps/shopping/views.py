@@ -1,16 +1,11 @@
 from django.shortcuts import render, redirect
-
-from shopping.utils import cartview, wishview
+from shopping.utils import cartview, wishview, paginateProducts
 # Create your views here.
 from products.models import Cart, Wishist, Product
 # from .forms import ReviewForm
-from django.http import JsonResponse
-import json
-import datetime
 from django.db.models import Q
 from .models import *
 from django.contrib import messages
-from products.forms import CartForm
 from django.contrib.auth.decorators import login_required
 
 
@@ -45,7 +40,7 @@ def shop(request):
     sizes = Sizes.objects.all()
     tags = Tags.objects.all()
     q = request.GET.get('q') if request.GET.get('q') != None else ''
-    rooms = Product.objects.filter(
+    products = Product.objects.filter(
         Q(category__name__icontains=q) |
         Q(name__icontains=q) |
         Q(skills__icontains=q)|
@@ -54,20 +49,21 @@ def shop(request):
         Q(size__name__icontains=q)| 
         Q(brands__name__icontains=q)
     )
-    room_count = rooms.count()
-    
+    product_count = products.count()
+    custom_range, products = paginateProducts(request, products, 4)
     myctx = cartview(request)
     qyctx = wishview(request)
     context = {
         **myctx,
         **qyctx,
-        'products': rooms,
+        'products': products,
         'category': category,
         'colors' : colors,
         'tags' : tags,
         'sizes': sizes,
         'brands':brands,
-        'room_count': room_count,   
+        'product_count': product_count,  
+        'custom_range': custom_range,
         'itemlar': items,
     }
     return render(request, 'shop.html', context)

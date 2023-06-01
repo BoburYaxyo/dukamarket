@@ -1,7 +1,5 @@
-from urllib import request
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.validators import MaxValueValidator, MinValueValidator
 # Create your models here.
 
 
@@ -57,7 +55,6 @@ class Product(models.Model):
     name = models.CharField(max_length=200)
     price = models.FloatField(null=True)
     digital = models.BooleanField(default=False, null=True, blank=True)
-    # reviews = models.ManyToManyField(Review, related_name='reviews')
     color = models.ForeignKey(Colors, on_delete=models.CASCADE)
     tags = models.ForeignKey(Tags, on_delete=models.SET_NULL, null=True)
     category = models.ForeignKey(

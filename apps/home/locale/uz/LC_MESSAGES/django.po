@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-31 15:29+0500\n"
-"PO-Revision-Date: 2023-05-31 10:31+0000\n"
+"POT-Creation-Date: 2023-05-31 18:11+0500\n"
+"PO-Revision-Date: 2023-05-31 13:48+0000\n"
 "Last-Translator: bobur  <byaxyoxojayev@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -31,6 +31,10 @@ msgstr "Ajoyib bir xotirjamlik butun qalbimni egallab oldi, shu kabilar"
 #: apps/home/templates/about.html:16
 msgid "sweet mornings of spring which I enjoy with my whole heart."
 msgstr "butun qalbim bilan zavqlanadigan bahorning shirin tonglari."
+
+#: apps/home/templates/about.html:18
+msgid "Discover now"
+msgstr "HOZIR KESHQING"
 
 #: apps/home/templates/about.html:33
 msgid "ABOUT OUR ONLINE STORE"
@@ -166,9 +170,9 @@ msgid "Where We Are"
 msgstr "Biz qayerdamiz?"
 
 #: apps/home/templates/about.html:305 apps/home/templates/about.html:334
-#: apps/home/templates/about.html:392 apps/home/templates/contact.html:64
-#: apps/home/templates/contact.html:91 apps/home/templates/contact.html:118
-#: apps/home/templates/contact.html:143
+#: apps/home/templates/about.html:363 apps/home/templates/about.html:392
+#: apps/home/templates/contact.html:64 apps/home/templates/contact.html:91
+#: apps/home/templates/contact.html:118 apps/home/templates/contact.html:143
 msgid "Find us"
 msgstr "Bizni toping"
 

@@ -1,12 +1,5 @@
 {% extends 'main.html' %}
-
-
-
-
-
-
-
-
+{% load currency %}
 
 {% block content %}
    <body>
@@ -125,7 +118,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-9 col-lg-8">
+                    <div class="col-xl-9 col-lg-8"> 
                         <div class="shop-banner mb-30">
                             <div class="banner-image">
                                 <img class="banner-l" src="/static/assets/img/banner/sl-banner.jpg" alt="">
@@ -156,7 +149,7 @@
                                                   </ul>
                                             </div>
                                             <div class="product__result pl-60">
-                                                <p>Showing {{room_count}} relults</p>
+                                                <p>Showing {{product_count}} relults</p>
                                             </div>
                                         </div>
                                     </div>
@@ -210,7 +203,7 @@
                                                         <span>(0{{product.reviews.count}} review)</span>
                                                     </div>
                                                     <div class="price mb-10">
-                                                        <span>${{product.price}}</span>
+                                                        <span>{{product.price|currency:request.session.currency}} {{request.session.currency}}</span>
                                                     </div>
                                                 </div>
                                                 <div class="product__add-cart-s text-center">
@@ -230,6 +223,7 @@
                             </div>
                             <div class="tab-pane fade" id="FiveCol" role="tabpanel" aria-labelledby="FiveCol-tab">
                                 <div class="tp-wrapper-2">
+                                    {% for product in products %}
                                     <div class="single-item-pd">
                                         <div class="row align-items-center">
                                             <div class="col-xl-9">
@@ -238,13 +232,15 @@
                                                         <div class="col-md-4">
                                                             <div class="features-thum">
                                                                 <div class="features-product-image w-img">
-                                                                    <a href="product-details.html"><img src="assets/img/product/sm-1.jpg" alt=""></a>
+                                                                    <a href="product-details.html"><img src="{{product.imageURL}}" alt=""></a>
                                                                 </div>
+                                                                {% if product.free > 0 %}
                                                                 <div class="product__offer">
-                                                                    <span class="discount">-15%</span>
+                                                                    <span class="discount">-{{product.free}}%</span>
                                                                 </div>
+                                                                {% endif %}
                                                                 <div class="product-action">
-                                                                    <a href="#" class="icon-box icon-box-1" data-bs-toggle="modal" data-bs-target="#productModalId">
+                                                                    <a href="{% url 'product' product.id %}" class="icon-box icon-box-1" data-bs-toggle="modal" data-bs-target="#productModalId">
                                                                         <i class="fal fa-eye"></i>
                                                                         <i class="fal fa-eye"></i>
                                                                     </a>
@@ -258,10 +254,11 @@
                                                                     </a>
                                                                 </div>
                                                             </div>
+
                                                         </div>
                                                         <div class="col-md-8">
                                                             <div class="product__content product__content-d">
-                                                                <h6><a href="product-details.html">Classic Leather Backpack Daypack 2022</a></h6>
+                                                                <h6><a href="product-details.html">{{product.name}}</a></h6>
                                                                 <div class="rating mb-5">
                                                                     <ul class="rating-d">
                                                                         <li><a href="#"><i class="fal fa-star"></i></a></li>
@@ -270,14 +267,11 @@
                                                                         <li><a href="#"><i class="fal fa-star"></i></a></li>
                                                                         <li><a href="#"><i class="fal fa-star"></i></a></li>
                                                                     </ul>
-                                                                    <span>(01 review)</span>
+                                                                    <span>(0{{product.reviews.count}} review)</span>
                                                                 </div>
                                                                 <div class="features-des">
                                                                     <ul>
-                                                                        <li><a href="product-details.html"><i class="fas fa-circle"></i> Bass and Stereo Sound.</a></li>
-                                                                        <li><a href="product-details.html"><i class="fas fa-circle"></i> Display with 3088 x 1440 pixels resolution.</a></li>
-                                                                        <li><a href="product-details.html"><i class="fas fa-circle"></i> Memory, Storage &amp; SIM: 12GB RAM, 256GB.</a></li>
-                                                                        <li><a href="product-details.html"><i class="fas fa-circle"></i> Androi v10.0 Operating system.</a></li>
+                                                                        Skills: <li><a href="{% url 'product' product.id %}"><i class="fas fa-circle"></i> {{product.skills}}</a></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -291,49 +285,25 @@
                                                     <h6>$220.00 - <del> $240.00</del></h6>
                                                 </div>
                                                 <div class="stock-btn ">
-                                                    <button type="button" class="cart-btn d-flex mb-10 align-items-center justify-content-center w-100">
+                                                    <a href="{% url 'add-cart' product.id %}" class="cart-btn d-flex mb-10 align-items-center justify-content-center w-100">
                                                     Add to Cart
-                                                    </button>
-                                                    <button type="button" class="wc-checkout d-flex align-items-center justify-content-center w-100" data-bs-toggle="modal" data-bs-target="#productModalId">
+                                                    </a>
+                                                    <a href="{% url 'product' product.id %}" class="wc-checkout d-flex align-items-center justify-content-center w-100">
                                                         Quick View
-                                                    </button>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                        
-                        <div class="tp-pagination text-center">
-                            <div class="row">
-                                <div class="col-xl-12">
-                                    <div class="basic-pagination pt-30 pb-30">
-                                        <nav>
-                                           <ul>
-                                              <li>
-                                                 <a href="shop.html" class="active">1</a>
-                                              </li>
-                                              <li>
-                                                 <a href="shop.html">2</a>
-                                              </li>
-                                              <li>
-                                                 <a href="shop.html">3</a>
-                                              </li>
-                                             <li>
-                                                <a href="shop.html">5</a>
-                                             </li>
-                                             <li>
-                                                <a href="shop.html">6</a>
-                                             </li>
-                                              <li>
-                                                 <a href="shop.html">
-                                                    <i class="fal fa-angle-double-right"></i>
-                                                 </a>
-                                              </li>
-                                           </ul>
-                                         </nav>
-                                     </div>
+                                    {% endfor %}
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                      
+                                          
+                                     
+                                            {% include 'pagination.html' with queryset=products custom_range=custom_range %}                                             
+                         
+                            
                     </div>
                 </div>
             </div>
