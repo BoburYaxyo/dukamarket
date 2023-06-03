@@ -56,7 +56,7 @@
                                         <a href="{% url 'blog-details' blog.id %}"><img style="max-height: 222px; min-height: 201.9px;" src="{{blog.imageURL}}" alt=""></a>
                                     </div>
                                     <div class="blog-tag blog-tag-2">
-                                        <a href="{% url 'blog' %}">{{blog.name}} {% for blog_tag in blog.btag.all %} {{blog_tag}}{% endfor %}</a>
+                                        <a href="{% url 'blog' %}">{{blog.name}}</a>
                                     </div>
                                 </div>
                                 <div class="smblog-content smblog-content-3">

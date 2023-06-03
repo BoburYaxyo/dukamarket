@@ -95,3 +95,15 @@ def errorim(request):
         **qyctx,
         'category': category}
     return render(request, '404.html', context)
+
+
+def profile(request):
+    category = Categories.objects.all()
+    myctx = cartview(request)
+    qyctx = wishview(request)
+    context = {
+        **myctx,
+        **qyctx,
+        'category': category
+        }    
+    return render(request, 'my_account.html', context)

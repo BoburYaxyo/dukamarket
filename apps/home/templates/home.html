@@ -24,7 +24,7 @@
                                         <h2 data-animation="fadeInLeft" data-delay="1.7s" class="pt-15 slider-title pb-5">BIG SALE <br> TOP HEADPHONE</h2>
                                         <p class="pr-20 slider_text" data-animation="fadeInLeft" data-delay="1.9s">Best Sport Edition 2022</p>
                                         <div class="slider-bottom-btn mt-65">
-                                            <a data-animation="fadeInUp" data-delay="1.15s" href="shop.html" class="st-btn-border b-radius-2">Discover now</a>
+                                            <a data-animation="fadeInUp" data-delay="1.15s" href="{% url 'shop' %}" class="st-btn-border b-radius-2">Discover now</a>
                                         </div>
                                     </div>
                                 </div><!-- /single-slider -->
@@ -93,7 +93,7 @@
                                     </div>
                                     <div class="banner__content banner__content-3">
                                         <div class="banner-df-btn mb-15">
-                                            <a href="#" class="st-btn b-radius">HOT DEALS</a>
+                                            <a href="{% url 'shop' %}" class="st-btn b-radius">HOT DEALS</a>
                                         </div>
                                         <p>Xbox Wireless</p>
                                         <h6 class="df-title"><a href="{% url 'product-details' %}">Sale Up To 50% Off</a></h6>
