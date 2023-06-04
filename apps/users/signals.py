@@ -18,7 +18,8 @@ def createProfile(sender, instance, created, **kwargs):
             username=user.username,
             email=user.email,
         )
-        
+
+
 def updateUser(sender, instance, created, **kwargs):
     profile = instance
     user = profile.user
@@ -28,7 +29,7 @@ def updateUser(sender, instance, created, **kwargs):
         user.username = profile.username
         user.email = profile.email
         user.save()
-    
+
     subject = 'Welcome to DevSearch'
     message = 'We are glad you are here!'
     send_mail(
@@ -48,8 +49,6 @@ def deleteUser(sender, instance, **kwargs):
         pass
 
 
-
 post_save.connect(createProfile, sender=User)
 post_save.connect(updateUser, sender=Profile)
 post_delete.connect(deleteUser, sender=Profile)
-

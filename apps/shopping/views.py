@@ -11,7 +11,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='login')
 def addCartView(request, id) -> None:
-    
+
     product: Product = Product.objects.get(id=id)
     cart, _ = Cart.objects.get_or_create(user=request.user)
     cart.products.add(product)
@@ -44,10 +44,10 @@ def shop(request):
     products = Product.objects.filter(
         Q(category__name__icontains=q) |
         Q(name__icontains=q) |
-        Q(skills__icontains=q)|
-        Q(tags__name__icontains=q)|
-        Q(color__name__icontains=q)|
-        Q(size__name__icontains=q)| 
+        Q(skills__icontains=q) |
+        Q(tags__name__icontains=q) |
+        Q(color__name__icontains=q) |
+        Q(size__name__icontains=q) |
         Q(brands__name__icontains=q)
     )
     product_count = products.count()
@@ -59,11 +59,11 @@ def shop(request):
         **qyctx,
         'products': products,
         'category': category,
-        'colors' : colors,
-        'tags' : tags,
+        'colors': colors,
+        'tags': tags,
         'sizes': sizes,
-        'brands':brands,
-        'product_count': product_count,  
+        'brands': brands,
+        'product_count': product_count,
         'custom_range': custom_range,
         'itemlar': items,
     }
@@ -74,8 +74,10 @@ def shop(request):
 def cart(request):
     myctx = cartview(request)
     category = Categories.objects.all()
+
     context = {**myctx, 'category': category}
     return render(request, 'cart.html', context)
+
 
 @login_required(login_url='login')
 def removeWishlistView(request, id: int) -> None:

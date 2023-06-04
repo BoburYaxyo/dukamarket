@@ -22,7 +22,7 @@ def home(request):
         request.session['currency'] = settings.DEFAULT_CURRENCY
     myctx = cartview(request)
     qyctx = wishview(request)
-    
+
     context = {
         **myctx,
         **qyctx,
@@ -41,13 +41,13 @@ def about(request):
     category = Categories.objects.all()
     myctx = cartview(request)
     qyctx = wishview(request)
-    
+
     context = {
         **myctx,
         **qyctx,
         'category': category,
         'page': page
-        }
+    }
     return render(request, 'about.html', context)
 
 
@@ -61,7 +61,7 @@ def faq(request):
         **qyctx,
         'category': category,
         'page': page
-        }
+    }
     return render(request, 'faq.html', context)
 
 
@@ -76,7 +76,7 @@ def contact(request):
         **qyctx,
         'category': category,
         'page': page
-        }
+    }
     return render(request, 'contact.html', context)
 
 

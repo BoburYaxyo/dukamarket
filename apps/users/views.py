@@ -43,7 +43,7 @@ def logoutUser(request):
 
 
 def register(request):
-    form = CustomUserCreationForm() 
+    form = CustomUserCreationForm()
 
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
@@ -105,5 +105,5 @@ def profile(request):
         **myctx,
         **qyctx,
         'category': category
-        }    
+    }
     return render(request, 'my_account.html', context)

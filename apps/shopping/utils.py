@@ -15,13 +15,12 @@ def cartview(request) -> dict:
 
     if cart_products:
         myctx["sum_price"] = cart_products.products.aggregate(
-            Sum('price')).get('price__sum')       
+            Sum('price')).get('price__sum')
         myctx['cartitems'] = cart_products.products.all()
         myctx['cart_count'] = cart_products.products.count()
-    
-    return myctx     
-        
-        
+    return myctx
+
+
 def wishview(request):
     qyctx: dict = {}
     qyctx["wishProductsCount"] = 0
@@ -33,11 +32,8 @@ def wishview(request):
         if wishProducts:
             qyctx["wishItems"] = wishProducts.products.all()
             qyctx["wishProductsCount"] = wishProducts.products.count()
-            
-            
+
     return qyctx
-
-
 
 
 def paginateProducts(request, products, results):
