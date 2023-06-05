@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from shopping.utils import cartview, wishview
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, ProductCreationForm, ProfileForm
 from django.contrib.auth import login, authenticate, logout
 from shopping.models import Categories
 from django.shortcuts import render
@@ -97,13 +97,36 @@ def errorim(request):
     return render(request, '404.html', context)
 
 
+
+
+@login_required(login_url='login')
 def profile(request):
     category = Categories.objects.all()
+    profile = request.user.profile
+    form = ProfileForm(instance=profile)
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    pform = ProductCreationForm()
+    if request.method == 'POST':
+        pform = ProductCreationForm(request.POST)
+        if pform.is_valid():
+            pform.save()
+            return redirect('profile')
+
     myctx = cartview(request)
+    profile = Profile.objects.all()
     qyctx = wishview(request)
-    context = {
+    context = { 
         **myctx,
         **qyctx,
-        'category': category
+        'category': category,
+        'profile': profile,
+        'form': form,
+        'pform':pform
     }
-    return render(request, 'my_account.html', context)
+    return render(request, 'admin_profile.html', context)

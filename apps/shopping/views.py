@@ -44,7 +44,6 @@ def shop(request):
     products = Product.objects.filter(
         Q(category__name__icontains=q) |
         Q(name__icontains=q) |
-        Q(skills__icontains=q) |
         Q(tags__name__icontains=q) |
         Q(color__name__icontains=q) |
         Q(size__name__icontains=q) |

@@ -239,10 +239,10 @@
                         <div class="header-action">
                             {% if request.user.is_authenticated %}
                             <div class="block-userlink">
-                                <a class="icon-link icon-link-2" href="{% url 'logout' %}">
+                                <a class="icon-link icon-link-2" href="{% url 'profile' %}">
                         
                                 <span class="text">
-                               {% trans "Logout" %}  </span>
+                               My profile  </span>
                                 </a>
                             </div>
                             {% else %}

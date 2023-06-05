@@ -1,0 +1,152 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    <!-- CSS
+    ============================================ -->
+    <link rel="stylesheet" href="/static/assets/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/static/assets/assets/css/font.awesome.css" />
+    <link rel="stylesheet" href="/static/assets/assets/css/pe-icon-7-stroke.css" />
+    <link rel="stylesheet" href="/static/assets/assets/css/animate.min.css">
+    <link rel="stylesheet" href="/static/assets/assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/static/assets/assets/css/venobox.css">
+    <link rel="stylesheet" href="/static/assets/assets/css/jquery-ui.min.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="/static/assets/assets/css/style.css">
+    <!-- Minify Version -->
+    <link rel="stylesheet" href="/static/assets/assets/css/plugins.min.css">
+    <link rel="stylesheet" href="/static/assets/assets/css/style.min.css">
+    
+    {% extends 'main.html' %}
+    
+    {% block content %}
+    
+    <main>
+    <div class="page-banner-area page-banner-height-2" data-background="/static/assets/img/banner/page-banner-4.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="page-banner-content text-center">
+                        <h4 class="breadcrumb-title">MY Profile</h4>
+                        <div class="breadcrumb-two">
+                            <nav>
+                               <nav class="breadcrumb-trail breadcrumbs">
+                                  <ul class="breadcrumb-menu">
+                                     <li class="breadcrumb-trail">
+                                        <a href="/"><span>Home</span></a>
+                                     </li>
+                                     <li class="trail-item">
+                                        <span>My Profile</span>
+                                     </li>
+                                  </ul>
+                               </nav> 
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- page-banner-area-end -->
+    
+    <!-- account area start -->
+    <div class="account-dashboard pt-100px pb-100px">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    <!-- Nav tabs -->
+                    <div class="dashboard_tab_button" data-aos="fade-up" data-aos-delay="0">
+                        <ul role="tablist" class="nav flex-column dashboard-list">
+                            <li> <a href="my-account.html#orders" data-bs-toggle="tab" class="nav-link">Orders</a></li>
+                            <li><a href="my-account.html#account-details" data-bs-toggle="tab" class="nav-link active">Account details</a>
+                            </li>
+                            <li><a href="{% url 'logout' %}" class="nav-link">logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content" data-aos="fade-up" data-aos-delay="200">
+                        
+                        <div class="tab-pane fade" id="orders">
+                            <h4>Orders</h4>
+                            <div class="table_page table-responsive">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Order</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                            <th>Total</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>May 10, 2018</td>
+                                            <td><span class="success">Completed</span></td>
+                                            <td>$25.00 for 1 item </td>
+                                            <td><a href="{% url 'cart' %}" class="view">view</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>May 10, 2018</td>
+                                            <td>Processing</td>
+                                            <td>$17.00 for 1 item </td>
+                                            <td><a href="{% url 'cart' %}" class="view">view</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane fade show active" id="account-details">
+                            <h3>Account details </h3>
+                            <div class="login">
+                                <div class="login_form_container">
+                                    <div class="account_login_form">
+                                            <!-- Main Section -->
+                                        <a class="backButton" href="{% url 'profile' %}"><i class="im im-angle-left"></i></a>
+                                        <br>
+                            
+                                  
+                                        <form class="form" method="POST" action="{% url 'profile' %}" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                            
+                                            <div class="default-form-box mb-20">
+                                                <label>First Name</label>
+                                                {{form.name}}
+                                            </div>
+                                            <div class="default-form-box mb-20">
+                                                <label>Username</label>
+                                                {{form.username}}
+                                            </div>
+                                            <div class="default-form-box mb-20">
+                                                <label>Phone Number</label>
+                                                {{form.phone_number}}
+                                            </div>
+                                            <div class="default-form-box mb-20">
+                                                <label>Email</label>
+                                                {{form.email}}
+                                            </div>
+                                            
+                                            <div class="form__field">
+                                                <label for="formInput#text">{{form.profile_image.label}}</label>
+                                                <p style="max_width: 10px;">{{form.profile_image}}</p>
+                                            </div>
+                                           
+                                            <div class="save_button mt-3">
+                                                <button class="btn" type="submit">Save</button>
+                                            </div> 
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- account area start -->
+    
+    </main>
+    {% include 'ptscripts.html' %}
+    {% endblock content %}

@@ -18,9 +18,10 @@ class Profile(models.Model):
         null=True, blank=True, upload_to='images/', default="images/user-default.png")
     phone_number = models.CharField(max_length=20, blank=True, null=True)
     username = models.CharField(max_length=200, blank=True, null=True)
+    birthday = models.DateField(null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
-    @property
+    @property 
     def imageURL(self):
         try:
             url = self.profile_image.url

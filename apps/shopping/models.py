@@ -48,6 +48,7 @@ class Sizes(models.Model):
         return self.name
 
 
+
 class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
@@ -61,17 +62,14 @@ class Product(models.Model):
         Sizes, on_delete=models.SET_NULL, null=True, blank=True)
     brands = models.ForeignKey(
         Brands, on_delete=models.SET_NULL, null=True, blank=True)
-    sold = models.IntegerField(default=0)
     free = models.IntegerField(default=0)
-    skills = models.TextField(null=True)
-    special_offers = models.BooleanField(default=False, null=True, blank=True)
     image = models.ImageField(upload_to='images/')
 
     def __str__(self):
         return self.name
 
     def get_rating(self):
-        reviews_total = 0
+        reviews_total = 0 
 
         for review in self.reviews.all():
             reviews_total += int(review.rating)
@@ -89,23 +87,12 @@ class Product(models.Model):
             url = ''
         return url
 
-
-class Shipping(models.Model):
-    country = models.CharField(max_length=150)
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    company_name = models.CharField(max_length=100)
-    street_address = models.CharField(max_length=100)
-    home_place_number = models.CharField(max_length=100)
-    phone_number = models.CharField(max_length=15)
-    town_or_city = models.CharField(max_length=100)
-    state = models.CharField(max_length=100)
-    post_code = models.CharField(max_length=100)
-    email_adress = models.EmailField(max_length=100)
-    ship_different = models.BooleanField(default=False)
+class Skills(models.Model):
+    skill = models.CharField(max_length=250)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.first_name + ' ' + self.last_name
+        return self.name
 
 
 class Review(models.Model):
