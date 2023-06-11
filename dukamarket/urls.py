@@ -18,7 +18,6 @@ urlpatterns = [
     path('savecur', views.savecur, name='savelangcur'),
     path('i18n/', include(django.conf.urls.i18n)),
     path('rosetta/', include('rosetta.urls')),
-
 ]  
 
 urlpatterns += i18n_patterns(

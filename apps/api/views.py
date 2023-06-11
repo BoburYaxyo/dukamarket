@@ -1,39 +1,46 @@
+from blog.models import Blog, Post
+from products.models import Cart, Order
 from shopping.models import Product, Review
 # from rest_framework.response import Response
 # from rest_framework import status\
 from rest_framework import viewsets
+
+from users.models import Profile
 # from rest_framework.views import APIView
-from .serializers import ProductSerializer, ReviewSerializer
+from .serializers import BlogSerializer, CartSerializer, OrderSerializer, PostSerializer, ProductSerializer, ProfileSerializer, ReviewSerializer
 from django.utils.translation import gettext_lazy as _
 from rest_framework import generics, mixins
-class ReviewAV(mixins.ListModelMixin,
-                  mixins.CreateModelMixin,
-                  generics.GenericAPIView):
-    queryset = Review.objects.all()
-    serializer_class = ReviewSerializer
-    def get(self, request, *args, **kwargs):
-        return self.list(request, *args, **kwargs)
 
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-    
-    
-    
+class ReviewVS(viewsets.ModelViewSet):
+
+    serializer_class = ReviewSerializer
+    queryset = Review.objects.all()
+
+class CartVS(viewsets.ModelViewSet):
+    serializer_class = CartSerializer
+    queryset = Cart.objects.all()
+
 class ProductVS(viewsets.ModelViewSet):
-    
+
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
-    # def get(self, request):
-    #     movies = Product.objects.all()
-    #     serializer = ProductSerializer(movies, many=True)
-    #     return Response(serializer.data)
 
-    # def post(self, request):
-        
-    #     serializer = ProductSerializer(data=request.data)
-        
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    #     else:
-    #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class ProfileVS(viewsets.ModelViewSet):
+    
+    serializer_class = ProfileSerializer
+    queryset = Profile.objects.all()
+
+class OrderVS(viewsets.ModelViewSet):
+
+    serializer_class = OrderSerializer
+    queryset = Order.objects.all()
+
+
+class BlogVS(viewsets.ModelViewSet):
+    serializer_class = BlogSerializer
+    queryset = Blog.objects.all()
+    
+class PostVS(viewsets.ModelViewSet):
+    serializer_class = PostSerializer
+    queryset = Post.objects.all()
+

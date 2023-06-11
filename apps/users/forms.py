@@ -6,7 +6,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.forms.widgets import PasswordInput, TextInput
 
 from django import forms
-from shopping.models import Product
+from shopping.models import Brands, Product
 
 from users.models import Profile
 
@@ -41,6 +41,17 @@ class ProductCreationForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(ProductCreationForm, self).__init__(*args, **kwargs)
+
+        for name, field in self.fields.items():
+            field.widget.attrs.update({'class': 'input'})
+            
+class BrandCreationForm(forms.ModelForm):
+    class Meta: 
+        model = Brands
+        fields = ['name']
+
+    def __init__(self, *args, **kwargs):
+        super(BrandCreationForm, self).__init__(*args, **kwargs)
 
         for name, field in self.fields.items():
             field.widget.attrs.update({'class': 'input'})

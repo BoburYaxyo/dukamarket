@@ -239,20 +239,36 @@
                         <div class="header-action">
                             {% if request.user.is_authenticated %}
                             <div class="block-userlink">
+                                {% if request.user.is_staff %}
+                                <a class="icon-link icon-link-2" href="{% url 'admin-page' %}">
+                                    <span class="text">
+                              
+                                   My profile  </span>
+                                    </a>
+                                    {% else %}
                                 <a class="icon-link icon-link-2" href="{% url 'profile' %}">
-                        
                                 <span class="text">
+                                   
                                My profile  </span>
                                 </a>
+                                {% endif %}
                             </div>
                             {% else %}
                             <div class="block-userlink">
-                                <a class="icon-link icon-link-2" href="{% url 'login' %}">
+                                {% if request.user.is_staff %}
+                                <a class="icon-link icon-link-2" href="{% url 'admin-page' %}">
+                                    <span class="text">
+                                    <span class="sub">Login </span>
+                                   My profile  </span>
+                                    </a>
+                                    {% else %}
+                                <a class="icon-link icon-link-2" href="{% url 'profile' %}">
                                 <span class="text">
-                                    {% trans "Login" %} </span>
+                                    <span class="sub">Login </span>   
+                               My profile  </span>
                                 </a>
+                                {% endif %}
                             </div>
-                         
                             {% endif %}
                             <div class="block-wishlist action">
                                 <a class="icon-link icon-link-2" href="{% url 'wishlist' %}">

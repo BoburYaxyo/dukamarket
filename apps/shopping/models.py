@@ -2,17 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
 
-
-class Customer(models.Model):
-    user = models.OneToOneField(
-        User, null=True, blank=True, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200, null=True)
-    email = models.CharField(max_length=200, null=True)
-
-    def __str__(self):
-        return self.name
-
-
 class Tags(models.Model):
     name = models.CharField(max_length=150)
 
@@ -50,7 +39,7 @@ class Sizes(models.Model):
 
 
 class Product(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=200)
     price = models.FloatField(null=True)
     digital = models.BooleanField(default=False, null=True, blank=True)
@@ -58,8 +47,9 @@ class Product(models.Model):
     tags = models.ForeignKey(Tags, on_delete=models.SET_NULL, null=True)
     category = models.ForeignKey(
         Categories, on_delete=models.SET_NULL, null=True)
-    size = models.ForeignKey(
-        Sizes, on_delete=models.SET_NULL, null=True, blank=True)
+    skills = models.CharField(max_length=200, null=True, blank=True)
+    size = models.ManyToManyField(
+        Sizes, blank=True)
     brands = models.ForeignKey(
         Brands, on_delete=models.SET_NULL, null=True, blank=True)
     free = models.IntegerField(default=0)
@@ -87,12 +77,6 @@ class Product(models.Model):
             url = ''
         return url
 
-class Skills(models.Model):
-    skill = models.CharField(max_length=250)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name
 
 
 class Review(models.Model):

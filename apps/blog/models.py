@@ -46,14 +46,14 @@ class Blog(models.Model):
 
 class Post(models.Model):
     blog = models.ForeignKey(
-        Blog, related_name="posts", on_delete=models.CASCADE)
+        Blog, on_delete=models.CASCADE, related_name="posts")
     comment = models.TextField()
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
     website = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(
-        User, related_name="posts", on_delete=models.CASCADE)
+        User,on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

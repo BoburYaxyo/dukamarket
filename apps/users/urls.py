@@ -9,8 +9,8 @@ urlpatterns = [
     path('logout/', views.logoutUser, name='logout'),
     path('checkout/', views.checkout, name='checkout'),
     path('404/', views.errorim, name='404'),
-    path('', views.profile, name='profile'),
-
+    path('', views.profile, name='admin-page'),
+    path('user-page/', views.userprofile, name='profile'),
     path('password-reset/', auth_views.PasswordResetView.as_view(
         template_name="password_reset_form.html"), name='password_reset'),
     path('password-reset/done/', auth_views.PasswordResetDoneView.as_view(

@@ -7,7 +7,7 @@ from shopping.utils import cartview, wishview
 from django.contrib import messages
 from .models import Wishist
 
-
+@login_required(login_url='login')
 def single_prooduct(request, pk):
     # productObj = Product.objects.get(id=pk)
     product = get_object_or_404(Product, id=pk)
@@ -44,7 +44,7 @@ def single_prooduct(request, pk):
         }
     return render(request, 'product-details.html', context)
 
-
+@login_required(login_url='login')
 def wishlist(request):
     myctx = cartview(request)
     qyctx = wishview(request)
@@ -56,7 +56,7 @@ def wishlist(request):
     }
     return render(request, 'wishlist.html', context)
 
-
+@login_required(login_url='login')
 def wishList(request):
     dbctx: dict = {}
     dbctx["cartitems"] = 0

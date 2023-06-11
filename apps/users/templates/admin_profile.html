@@ -1,3 +1,5 @@
+
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    <!-- CSS
 ============================================ -->
 <link rel="stylesheet" href="/static/assets/assets/css/bootstrap.min.css" />
@@ -16,7 +18,7 @@
 {% extends 'main.html' %}
 
 {% block content %}
-
+{% if request.user.is_staff %}
 <main>
 <div class="page-banner-area page-banner-height-2" data-background="/static/assets/img/banner/page-banner-4.jpg">
     <div class="container">
@@ -54,6 +56,7 @@
                 <div class="dashboard_tab_button" data-aos="fade-up" data-aos-delay="0">
                     <ul role="tablist" class="nav flex-column dashboard-list">
                         <li> <a href="my-account.html#products" data-bs-toggle="tab" class="nav-link">Add Product</a></li>
+                        <li> <a href="my-account.html#brands" data-bs-toggle="tab" class="nav-link">Add Brand</a></li>
                         <li><a href="my-account.html#account-details" data-bs-toggle="tab" class="nav-link active">Account details</a>
                         </li>
                         <li><a href="{% url 'logout' %}" class="nav-link">logout</a></li>
@@ -67,7 +70,7 @@
                     <div class="tab-pane fade" id="products">
                         <h4>Add product</h4>
                         <div class="table_page table-responsive">
-                            <form class="form" method="POST" action="{% url 'profile' %}" enctype="multipart/form-data">
+                            <form class="form" method="POST" action="{% url 'admin-page' %}" enctype="multipart/form-data">
                                   
                                 {% for form in pform %}
                                 <div class="default-form-box mb-20">
@@ -75,6 +78,26 @@
                                     {{form}}
                                 </div>
                                 {% endfor %}
+                                <div class="save_button mt-3">
+                                    <button class="btn" type="submit">Save</button>
+                                </div> 
+                            </form>
+
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="brands">
+                        <h4>Add brand</h4>
+                        <div class="table_page table-responsive">
+                            <form class="form" method="POST" action="{% url 'admin-page' %}" enctype="multipart/form-data">
+                                  
+                                {% for form in bform %}
+                                <div class="default-form-box mb-20">
+                                    <label>{{form.label}}</label>
+                                    {{form}}
+                                </div>
+                                For example:Fashion
+                                {% endfor %}
+
                                 <div class="save_button mt-3">
                                     <button class="btn" type="submit">Save</button>
                                 </div> 
@@ -91,7 +114,7 @@
                                         <!-- Main Section -->
                                     <a class="backButton" href="{% url 'profile' %}"><i class="im im-angle-left"></i></a>
                           
-                                    <form class="form" method="POST" action="{% url 'profile' %}" enctype="multipart/form-data">
+                                    <form class="form" method="POST" action="{% url 'admin-page' %}" enctype="multipart/form-data">
                                         {% csrf_token %}
                                         {% for form in form %}
                                         <div class="default-form-box mb-20">
@@ -115,5 +138,9 @@
 <!-- account area start -->
 
 </main>
+{% else %}
+You are not administrator!!!!!!!!!!!
+{% endif %}
 {% include 'ptscripts.html' %}
+
 {% endblock content %}
