@@ -11,7 +11,7 @@ from currencies.models import Currency
 from users.models import Profile
 from django.utils.translation import gettext as _
 
-
+@login_required(login_url='login')
 def home(request):
     blogs = Blog.objects.all()
     product = Product.objects.all()

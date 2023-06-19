@@ -142,8 +142,8 @@ def checkout(request):
                 )
 
             return redirect('checkout')
-    
-    
+            
+
     myctx = cartview(request)
     qyctx = wishview(request)
     context = {

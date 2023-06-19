@@ -16,7 +16,7 @@
                         <div class="breadcrumb__wrapper" style="background-color: white;">
                             <nav aria-label="breadcrumb" style="background-color: white;">
                                 <ol class="breadcrumb" style="background-color: white;">
-                                  <li class="breadcrumb-item" style="background-color: white;"><a href="index.html">Home</a></li>
+                                  <li class="breadcrumb-item" style="background-color: white;"><a href="/">Home</a></li>
                                   <li class="breadcrumb-item active" style="background-color: white;" aria-current="page">Shop</li>
                                 </ol>
                               </nav>
@@ -47,8 +47,8 @@
                             <div class="price__slider mt-30">
                                 <div id="slider-range" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 100%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span></div>
                                 <div>
-                                    <form action="#" class="s-form mt-20">
-                                        <input type="text" id="amount" readonly="">
+                                    <form action="{% url 'shop' %}" method='GET' class="s-form mt-20">
+                                        <input type="text" name='q'>
                                         <button type="submit" class="tp-btn-square-lg">Filter</button>
                                     </form>
                                 </div>
@@ -125,7 +125,7 @@
                                 <img class="banner-sm" src="/static/assets/img/banner/sl-banner-sm.png" alt="">
                                 <div class="banner-content text-center">
                                     <p class="banner-text mb-30">Hurry Up! <br> Free Shipping All Order Over $99</p>
-                                    <a href="shop.html" class="st-btn-d b-radius">Discover now</a>
+                                    <a href="{% url 'shop' %}" class="st-btn-d b-radius">Discover now</a>
                                 </div>
                             </div>
                         </div>
@@ -176,7 +176,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="product-action">
-                                                        <a href="#" class="icon-box icon-box-1" data-bs-toggle="modal" data-bs-target="#productModalId">
+                                                        <a href="{% url 'product' product.id %}" class="icon-box icon-box-1">
                                                             <i class="fal fa-eye"></i>
                                                             <i class="fal fa-eye"></i>
                                                         </a>
@@ -240,7 +240,7 @@
                                                                 </div>
                                                                 {% endif %}
                                                                 <div class="product-action">
-                                                                    <a href="{% url 'product' product.id %}" class="icon-box icon-box-1" data-bs-toggle="modal" data-bs-target="#productModalId">
+                                                                    <a href="{% url 'product' product.id %}" class="icon-box icon-box-1">
                                                                         <i class="fal fa-eye"></i>
                                                                         <i class="fal fa-eye"></i>
                                                                     </a>
@@ -281,8 +281,7 @@
                                             </div>
                                             <div class="col-xl-3">
                                                 <div class="product-stock mb-15">
-                                                    <h5>Availability: <span> 940 in stock</span></h5>
-                                                    <h6>$220.00 - <del> $240.00</del></h6>
+                                                    <h6>{{product.price|currency:request.session.currency}} {{request.session.currency}}</h6>
                                                 </div>
                                                 <div class="stock-btn ">
                                                     <a href="{% url 'add-cart' product.id %}" class="cart-btn d-flex mb-10 align-items-center justify-content-center w-100">

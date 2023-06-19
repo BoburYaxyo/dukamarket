@@ -40,14 +40,15 @@ def shop(request):
     sizes = Sizes.objects.all()
     tags = Tags.objects.all()
     q = request.GET.get('q') if request.GET.get('q') != None else ''
-    empty = []
+    l = request.GET.get('l') if request.GET.get('l') != None else ''
     products = Product.objects.filter(
         Q(category__name__icontains=q) |
         Q(name__icontains=q) |
         Q(tags__name__icontains=q) |
         Q(color__name__icontains=q) |
         Q(size__name__icontains=q) |
-        Q(brands__name__icontains=q)
+        Q(brands__name__icontains=q)|
+        Q(price__icontains=q) 
     )
     product_count = products.count()
     custom_range, products = paginateProducts(request, products, 4)

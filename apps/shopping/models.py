@@ -48,8 +48,8 @@ class Product(models.Model):
     category = models.ForeignKey(
         Categories, on_delete=models.SET_NULL, null=True)
     skills = models.CharField(max_length=200, null=True, blank=True)
-    size = models.ManyToManyField(
-        Sizes, blank=True)
+    size = models.ForeignKey(
+        Sizes, on_delete=models.CASCADE, null=True, blank=True)
     brands = models.ForeignKey(
         Brands, on_delete=models.SET_NULL, null=True, blank=True)
     free = models.IntegerField(default=0)
